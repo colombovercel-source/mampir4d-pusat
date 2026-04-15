@@ -19,7 +19,6 @@
 
 body {
   margin: 0; font-family: var(--font-main);
-  /* Background menggunakan link yang Anda berikan */
   background: linear-gradient(var(--bg-overlay), var(--bg-overlay)), url('https://i.imgur.com/wPlgJU7.png');
   background-size: cover;
   background-position: center;
@@ -33,23 +32,25 @@ body {
   border-bottom: 1px solid var(--border); backdrop-filter: blur(5px);
 }
 
-/* BANNER SLIDER STYLE */
+/* LOGO MAMPIR4D */
+.logo-link {
+  display: flex; justify-content: center; width: 100%; max-width: 400px;
+  margin-top: 55px;
+}
+.main-logo {
+  max-width: 180px; width: 100%; height: auto; display: block;
+}
+
+/* BANNER SLIDER */
 .slider-container {
   width: 100%; max-width: 400px; position: relative;
-  margin-top: 50px; margin-bottom: 15px; border-radius: 20px;
+  margin-top: 10px; margin-bottom: 15px; border-radius: 20px;
   overflow: hidden; box-shadow: 0 8px 25px rgba(0,0,0,0.5);
   border: 2px solid var(--border);
 }
+.slider-wrapper { display: flex; transition: transform 0.5s ease-in-out; }
+.slider-wrapper img { width: 100%; flex-shrink: 0; display: block; }
 
-.slider-wrapper {
-  display: flex; transition: transform 0.5s ease-in-out;
-}
-
-.slider-wrapper img {
-  width: 100%; flex-shrink: 0; display: block;
-}
-
-/* Navigasi Manual Slider */
 .nav-btn {
   position: absolute; top: 50%; transform: translateY(-50%);
   background: rgba(0,0,0,0.5); color: white; border: none;
@@ -59,6 +60,20 @@ body {
 .nav-btn:hover { background: var(--primary); }
 .prev { left: 10px; }
 .next { right: 10px; }
+
+/* RUNNING TEXT */
+.running-text-box {
+  width: 100%; max-width: 400px; background: rgba(0,0,0,0.6);
+  border-top: 1px solid var(--border); border-bottom: 1px solid var(--border);
+  overflow: hidden; white-space: nowrap; margin: 10px 0 15px; padding: 10px 0;
+}
+.text-moving {
+  display: inline-block; padding-left: 100%;
+  font-size: 12px; font-weight: 700; color: #fff;
+  text-transform: uppercase; letter-spacing: 1px;
+  animation: scroll-text 18s linear infinite;
+}
+@keyframes scroll-text { 0% { transform: translateX(0); } 100% { transform: translateX(-100%); } }
 
 /* ISI KONTEN */
 .title-small {
@@ -100,7 +115,7 @@ input {
 }
 .progress-bar { height: 100%; width: 0%; background: var(--primary); }
 
-/* TABEL RIWAYAT 20 USER DENGAN SCROLL */
+/* TABEL RIWAYAT DENGAN SCROLL */
 .history-scroll {
   max-height: 300px; overflow-y: auto; padding-right: 5px;
 }
@@ -124,6 +139,7 @@ input {
 @keyframes slideIn { from { transform: translateX(-120%); } to { transform: translateX(0); } }
 @keyframes slideOut { from { transform: translateX(0); opacity: 1; } to { transform: translateX(-120%); opacity: 0; } }
 
+/* MODAL */
 .modal {
   display: none; position: fixed; left: 0; top: 0; width: 100%; height: 100%;
   background: rgba(0, 0, 0, 0.9); backdrop-filter: blur(8px); justify-content: center; align-items: center; z-index: 10000;
@@ -138,6 +154,10 @@ input {
 <body>
 
 <div class="top-bar">MAMPIR4D OFFICIAL — SISTEM KLAIM FREEBET V.2026</div>
+
+<a href="https://mampirdalam.com/" class="logo-link">
+    <img src="https://i.imgur.com/CH8VkaL.png" alt="MAMPIR4D Logo" class="main-logo">
+</a>
 
 <div class="slider-container">
   <button class="nav-btn prev" onclick="moveSlide(-1)">❮</button>
@@ -155,6 +175,12 @@ input {
   <button class="nav-btn next" onclick="moveSlide(1)">❯</button>
 </div>
 
+<div class="running-text-box">
+  <div class="text-moving">
+    MAMPIR4D menampilkan pilihan menarik untuk semua kalangan. Dapatkan tantangan baru dan keseruan setiap harinya hanya di platform kami !!
+  </div>
+</div>
+
 <div class="title-small">SISTEM PUSAT MAMPIR4D</div>
 
 <div class="container">
@@ -162,7 +188,7 @@ input {
     ⚡ STATUS: <span style="color:#25d366">ONLINE</span> | KUOTA: <span id="quota">12</span> SLOT | <span id="timer">00:00:00</span>
   </div>
   <h1>Klaim Freebet</h1>
-  <p style="font-size: 12px; color: #bbb; margin-bottom: 20px;">Gunakan Voucher <b>2026MAXWIN</b> untuk klaim saldo</p>
+  <p style="font-size: 12px; color: #bbb; margin-bottom: 20px;">Gunakan Voucher <b>MAMPIR4DCUAN</b> untuk klaim saldo</p>
   
   <input type="text" id="userId" placeholder="Input User ID ">
   <input type="text" id="voucher" placeholder="Input Kode Voucher">
@@ -202,7 +228,6 @@ function showSlide(index) {
     if (index >= totalSlides) currentSlide = 0;
     else if (index < 0) currentSlide = totalSlides - 1;
     else currentSlide = index;
-    
     document.getElementById("sliderWrapper").style.transform = `translateX(-${currentSlide * 100}%)`;
 }
 
