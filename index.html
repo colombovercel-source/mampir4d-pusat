@@ -135,8 +135,10 @@ input {
         <div style="font-size: 55px; margin-bottom: 10px;">🏆</div>
         <h2 style="font-family: var(--font-head); color: var(--primary-light); margin: 0; font-size: 24px;">KLAIM BERHASIL!</h2>
         <p style="color: #eaddcf; font-size: 14px; line-height: 1.6; margin-top: 15px;">
-            Halo Member Setia <b id="displayUser" style="color: var(--primary);">USER</b>,<br>
-            Tiket Freebet anda telah kami verifikasi. Silakan ambil saldo anda sekarang!
+            Selamat untuk <b id="displayUser" style="color: var(--primary);">USER</b>,
+<br>
+            Screnshoot pesan ini sekarang!!
+<br > dan berikan ke Customer service!!
         </p>
         <a href="https://mampirdalam.com/" class="chat-btn">KLAIM KE LIVE CHAT</a>
     </div>
@@ -211,21 +213,22 @@ input {
 function toggleMenu() { document.getElementById("sideMenu").classList.toggle("active"); }
 function closeModal() { document.getElementById("successModal").style.display = "none"; }
 
-// Logic Slider Dinamis untuk 8 Gambar
 let sIdx = 0;
-const totalImages = 8; // Sesuai jumlah gambar yang Anda berikan
+const totalImages = 8; 
 setInterval(() => {
     sIdx = (sIdx + 1) % totalImages;
     const slider = document.getElementById("slider");
     if(slider) slider.style.transform = `translateX(-${sIdx * 100}%)`;
 }, 4000);
 
-// Notifikasi & Tabel Riwayat
+// Notifikasi & Tabel Riwayat (Random 20rb - 300rb Tanpa Perak)
 function showNotif() {
     const container = document.getElementById('notif-container');
     const uPrefix = ["WIN","BOSS","JP","VIP","MEGA","LUCKY"];
     const user = uPrefix[Math.floor(Math.random()*uPrefix.length)] + Math.floor(Math.random()*89+10) + "***";
-    const amount = (Math.floor(Math.random()*81+20)*1000);
+    
+    // Logika 20.000 - 300.000 kelipatan 1000
+    const amount = (Math.floor(Math.random() * (300 - 20 + 1)) + 20) * 1000;
     
     const n = document.createElement('div');
     n.className = 'live-notif';
@@ -244,7 +247,6 @@ function showNotif() {
 setInterval(showNotif, 6000);
 for(let i=0; i<8; i++) { setTimeout(showNotif, i * 600); }
 
-// Claim Logic
 function processClaim() {
     const idValue = document.getElementById("userId").value;
     const v = document.getElementById("voucher").value;
