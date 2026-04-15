@@ -1,0 +1,260 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Claim Freebet MAMPIR4D — Official System</title>
+<link href="https://fonts.googleapis.com/css2?family=Syne:wght@700;800&family=DM+Sans:wght@400;500;700&display=swap" rel="stylesheet">
+<script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.6.0/dist/confetti.browser.min.js"></script>
+<style>
+:root {
+  --bg: #0a0a0a;
+  --surface: #1a1a1a;
+  --primary: #d97706; 
+  --secondary: #eaddcf; 
+  --border: rgba(217, 119, 6, 0.3);
+  --font-head: 'Syne', sans-serif;
+  --font-main: 'DM Sans', sans-serif;
+}
+
+body {
+  margin: 0; font-family: var(--font-main);
+  background: radial-gradient(circle at center, #2e1d00 0%, #000 70%);
+  display: flex; flex-direction: column; align-items: center; padding: 20px 10px; color: var(--secondary);
+}
+
+.top-bar {
+  background: var(--surface); color: var(--secondary); width: 100%; text-align: center;
+  padding: 8px 0; font-size: 11px; font-weight: 700; position: fixed; top: 0; z-index: 100;
+  border-bottom: 1px solid var(--border);
+}
+
+.banner-img {
+  width: 100%; max-width: 400px; border-radius: 20px; 
+  margin-top: 50px; margin-bottom: 15px; 
+  box-shadow: 0 8px 25px rgba(217, 119, 6, 0.2);
+  display: block;
+}
+
+.title-small {
+  font-family: var(--font-head); font-size: 14px; font-weight: 800;
+  color: var(--primary); margin: 10px 0 20px; letter-spacing: 2px; text-transform: uppercase;
+}
+
+.container {
+  width: 100%; max-width: 400px; background: rgba(26, 26, 26, 0.95); border-radius: 24px;
+  border: 1px solid var(--border); box-shadow: 0 10px 40px rgba(0, 0, 0, 0.3);
+  padding: 30px; margin-bottom: 20px; text-align: center; box-sizing: border-box;
+  color: white;
+}
+
+.timer-box {
+  background: rgba(217, 119, 6, 0.1); border: 1px dashed var(--primary); padding: 10px;
+  border-radius: 12px; margin-bottom: 20px; font-size: 12px; font-weight: 700; color: var(--primary);
+}
+
+h1 { font-family: var(--font-head); font-size: 24px; margin: 0 0 10px; font-weight: 800; color: white; }
+
+input {
+  width: 100%; padding: 14px; margin-bottom: 12px; border-radius: 12px;
+  border: 1.5px solid var(--border); font-size: 14px; background: rgba(0, 0, 0, 0.3); box-sizing: border-box;
+  color: white;
+}
+
+.main-btn {
+  width: 100%; background: linear-gradient(90deg, #d97706, #fbbf24); color: #fff; border: none;
+  padding: 16px; border-radius: 12px; font-size: 15px; font-weight: 700;
+  cursor: pointer; transition: 0.3s; font-family: var(--font-head);
+  box-shadow: 0 5px 15px rgba(217, 119, 6, 0.3);
+}
+
+.main-btn:hover { background: linear-gradient(90deg, #fbbf24, #d97706); transform: translateY(-2px); }
+
+.progress-container {
+  width: 100%; height: 8px; background: rgba(255, 255, 255, 0.1); border-radius: 10px;
+  margin: 20px 0; display: none; overflow: hidden;
+}
+.progress-bar { height: 100%; width: 0%; background: var(--primary); }
+
+/* TABEL RIWAYAT DENGAN SCROLL */
+.history-title {
+  font-family: var(--font-head); font-size: 14px; margin-bottom: 15px; text-transform: uppercase;
+  color: var(--primary);
+}
+
+.history-scroll {
+  max-height: 350px; /* Tinggi maksimal sebelum scroll muncul */
+  overflow-y: auto;
+  padding-right: 5px;
+}
+
+/* Custom Scrollbar */
+.history-scroll::-webkit-scrollbar { width: 4px; }
+.history-scroll::-webkit-scrollbar-track { background: rgba(255,255,255,0.05); }
+.history-scroll::-webkit-scrollbar-thumb { background: var(--primary); border-radius: 10px; }
+
+.history-table { width: 100%; border-collapse: collapse; font-size: 13px; }
+.history-table tr { border-bottom: 1px solid rgba(217, 119, 6, 0.1); }
+.history-table td { padding: 12px 5px; color: #ccc; }
+.history-table tr:last-child { border: none; }
+.user-col { font-weight: 700; text-align: left; }
+.amt-col { font-weight: 800; color: var(--primary); text-align: right; }
+
+/* NOTIFIKASI */
+.live-notif {
+  position: fixed; bottom: 20px; left: 20px; background: var(--surface);
+  padding: 12px 18px; border-radius: 15px; box-shadow: 0 10px 25px rgba(0, 0, 0, 0.4);
+  z-index: 9999; display: flex; align-items: center; gap: 12px; font-size: 12px;
+  border: 1px solid var(--border); color: #ccc; animation: slideIn 0.5s ease-out;
+}
+
+@keyframes slideIn { from { transform: translateX(-120%); } to { transform: translateX(0); } }
+@keyframes slideOut { from { transform: translateX(0); opacity: 1; } to { transform: translateX(-120%); opacity: 0; } }
+
+.modal {
+  display: none; position: fixed; left: 0; top: 0; width: 100%; height: 100%;
+  background: rgba(0, 0, 0, 0.9); backdrop-filter: blur(5px); justify-content: center; align-items: center; z-index: 10000;
+}
+.modal-content {
+  background: var(--surface); padding: 35px; border-radius: 28px; width: 85%; max-width: 320px; text-align: center;
+  border: 1px solid var(--border); color: white;
+}
+.cs-btn { display: block; width: 100%; background: #25d366; color: #fff; text-decoration: none; padding: 15px; border-radius: 12px; font-weight: 700; margin-top: 20px; }
+</style>
+</head>
+<body>
+
+<div class="top-bar">MAMPIR4D OFFICIAL CLAIM SYSTEM — V.2026</div>
+
+<img src="https://i.imgur.com/wPlgJU7.png" alt="MAMPIR4D Banner" class="banner-img">
+
+<div class="title-small">SISTEM PUSAT MAMPIR4D</div>
+
+<div class="container">
+  <div class="timer-box">
+    ⚠️ KUOTA TERBATAS: <span id="quota">12</span> SLOT | <span id="timer">00:00:00</span>
+  </div>
+  <h1>Klaim Freebet</h1>
+  <p style="font-size: 12px; color: #ccc; margin-bottom: 20px;">Masukkan User ID dan Kode Voucher yang valid</p>
+  
+  <input type="text" id="userId" placeholder="User ID MAMPIR4D">
+  <input type="text" id="voucher" placeholder="Kode Voucher (2026MAXWIN)">
+  
+  <button class="main-btn" onclick="claimFreebet()">PROSES KLAIM SEKARANG</button>
+
+  <div class="progress-container" id="pCon">
+    <div class="progress-bar" id="pBar"></div>
+  </div>
+  <div id="msg" style="margin-top:15px; font-size:12px; font-weight:700; color:white;"></div>
+</div>
+
+<div class="container" style="padding: 20px;">
+  <div class="history-title">Riwayat 20 Klaim Terakhir</div>
+  <div class="history-scroll">
+    <table class="history-table" id="historyTable">
+      </table>
+  </div>
+</div>
+
+<div class="modal" id="popupModal">
+  <div class="modal-content">
+    <div style="font-size: 50px;">🌟</div>
+    <h2 style="font-family: var(--font-head); color: var(--primary); margin: 10px 0;">BERHASIL!</h2>
+    <p id="popupMessage" style="font-size: 14px; line-height: 1.5; color: white;"></p>
+    <a href="https://mampirdalam.com/" target="_blank" class="cs-btn">KONFIRMASI KE ADMIN</a>
+    <p onclick="location.reload()" style="font-size: 12px; color: #aaa; margin-top: 15px; cursor: pointer;">Tutup</p>
+  </div>
+</div>
+
+<script>
+// 1. DATA AWAL RIWAYAT (DIUBAH MENJADI 20 USER)
+const prefixes = ["MMP","WIN","VIP","GAC","JAX","LUX","PRO","BET","SLOT"];
+let historyData = JSON.parse(localStorage.getItem("mampir_history_scroll")) || [];
+
+if(historyData.length === 0) {
+    for(let i=0; i<20; i++) {
+        historyData.push({
+            id: prefixes[Math.floor(Math.random()*prefixes.length)] + Math.floor(Math.random()*8999+1000),
+            amt: Math.floor(Math.random()*(100-20+1)+20)*1000
+        });
+    }
+}
+
+function renderTable() {
+    const table = document.getElementById("historyTable");
+    table.innerHTML = historyData.map(item => `
+        <tr>
+            <td class="user-col">${item.id}</td>
+            <td class="amt-col">IDR ${item.amt.toLocaleString('id-ID')}</td>
+        </tr>
+    `).join('');
+}
+renderTable();
+
+// 2. COUNTDOWN TIMER
+function startTimer(duration, display) {
+    let timer = duration, m, s;
+    setInterval(() => {
+        m = parseInt(timer / 60, 10);
+        s = parseInt(timer % 60, 10);
+        display.textContent = "BERAKHIR DALAM: " + (m < 10 ? "0" + m : m) + ":" + (s < 10 ? "0" + s : s);
+        if (--timer < 0) timer = duration;
+    }, 1000);
+}
+startTimer(1800, document.querySelector('#timer'));
+
+// 3. LIVE NOTIFICATION
+function showNotif() {
+    const user = prefixes[Math.floor(Math.random()*prefixes.length)] + Math.floor(Math.random()*899+100) + "***";
+    const val = Math.floor(Math.random()*(100-20+1)+20) + ".000";
+    const div = document.createElement("div");
+    div.className = "live-notif";
+    div.innerHTML = `<span>⚡</span> <div><b>${user}</b> baru saja klaim<br><span style="color:var(--primary)">IDR ${val}</span></div>`;
+    document.body.appendChild(div);
+    setTimeout(() => {
+        div.style.animation = "slideOut 0.5s ease-in";
+        setTimeout(() => div.remove(), 500);
+    }, 4000);
+}
+setInterval(showNotif, 10000);
+
+// 4. KLAIM FUNCTION
+function claimFreebet() {
+    const id = document.getElementById("userId").value.trim().toUpperCase();
+    const vcr = document.getElementById("voucher").value.trim();
+    const msg = document.getElementById("msg");
+
+    if(!id || vcr !== "2026MAXWIN") {
+        msg.innerHTML = "<span style='color:#fb7185;'>⚠️ ID atau Voucher Salah!</span>";
+        return;
+    }
+
+    msg.innerText = "Memproses verifikasi saldo...";
+    document.getElementById("pCon").style.display = "block";
+    
+    let w = 0;
+    let timer = setInterval(() => {
+        w += 2;
+        document.getElementById("pBar").style.width = w + "%";
+        if(w >= 100) {
+            clearInterval(timer);
+            const winAmt = Math.floor(Math.random()*(100-25+1)+25)*1000;
+            
+            // Tambah ke riwayat (tetap simpan 20 data teratas)
+            historyData.unshift({id: id, amt: winAmt});
+            if(historyData.length > 20) historyData.pop();
+            localStorage.setItem("mampir_history_scroll", JSON.stringify(historyData));
+            renderTable();
+
+            confetti({ particleCount: 150, spread: 70, origin: { y: 0.6 } });
+
+            document.getElementById("popupMessage").innerHTML = `Selamat ID <b>${id}</b>!<br>Anda mendapatkan saldo tambahan senilai:<br><b style="font-size:20px; color:var(--primary)">IDR ${winAmt.toLocaleString('id-ID')}</b>`;
+            document.getElementById("popupModal").style.display = "flex";
+            document.getElementById("pCon").style.display = "none";
+            msg.innerText = "";
+        }
+    }, 40);
+}
+</script>
+</body>
+</html>
