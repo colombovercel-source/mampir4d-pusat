@@ -22,37 +22,23 @@ body {
   background: linear-gradient(var(--bg-overlay), var(--bg-overlay)), url('https://i.imgur.com/wPlgJU7.png');
   background-size: cover; background-position: center; background-attachment: fixed;
   display: flex; flex-direction: column; align-items: center; color: var(--secondary);
-  padding-top: 90px; /* Menyesuaikan tinggi Top Bar baru */
+  padding-top: 90px;
 }
 
-/* TOP BAR - LOGO DI TENAH & BESAR */
+/* TOP BAR */
 .top-bar {
   background: #000; width: 100%; height: 80px;
   display: flex; align-items: center; justify-content: center;
   position: fixed; top: 0; left: 0; z-index: 1000;
   border-bottom: 2px solid var(--border); box-sizing: border-box;
 }
+.top-bar-content { position: relative; width: 100%; max-width: 1200px; display: flex; align-items: center; justify-content: center; height: 100%; }
+.top-bar-logo { height: 42px; width: auto; filter: drop-shadow(0 0 8px rgba(217, 119, 6, 0.4)); }
 
-.top-bar-content {
-  position: relative; width: 100%; max-width: 1200px;
-  display: flex; align-items: center; justify-content: center; height: 100%;
-}
-
-.top-bar-logo { 
-  height: 42px; /* Logo diperbesar lagi */
-  width: auto; 
-  filter: drop-shadow(0 0 8px rgba(217, 119, 6, 0.4));
-}
-
-/* BURGER MENU ICON DI KIRI */
-.menu-burger {
-  position: absolute; left: 20px;
-  cursor: pointer; width: 28px; height: 20px;
-  display: flex; flex-direction: column; justify-content: space-between;
-}
+/* BURGER MENU */
+.menu-burger { position: absolute; left: 20px; cursor: pointer; width: 28px; height: 20px; display: flex; flex-direction: column; justify-content: space-between; }
 .menu-burger span { display: block; height: 3px; width: 100%; background: var(--primary); border-radius: 2px; }
 
-/* SIDE MENU */
 .side-menu {
   position: fixed; top: 0; left: 0; width: 260px; height: 100%;
   background: rgba(10, 10, 10, 0.98); border-right: 2px solid var(--border);
@@ -60,10 +46,7 @@ body {
   transform: translateX(-100%); transition: 0.4s cubic-bezier(0.4, 0, 0.2, 1); backdrop-filter: blur(15px);
 }
 .side-menu.active { transform: translateX(0); }
-.menu-overlay {
-  position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.7);
-  z-index: 1999; display: none;
-}
+.menu-overlay { position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.7); z-index: 1999; display: none; }
 .menu-overlay.active { display: block; }
 
 .side-menu a {
@@ -81,80 +64,54 @@ body {
 }
 .slider-wrapper { display: flex; transition: transform 0.5s ease-in-out; }
 .slider-wrapper img { width: 100%; flex-shrink: 0; display: block; }
-
-.nav-btn {
-  position: absolute; top: 50%; transform: translateY(-50%);
-  background: rgba(0,0,0,0.4); color: white; border: none; width: 30px; height: 30px;
-  border-radius: 50%; cursor: pointer; z-index: 10; display: flex; align-items: center; justify-content: center;
-}
+.nav-btn { position: absolute; top: 50%; transform: translateY(-50%); background: rgba(0,0,0,0.4); color: white; border: none; width: 30px; height: 30px; border-radius: 50%; cursor: pointer; z-index: 10; display: flex; align-items: center; justify-content: center; }
 .prev { left: 8px; } .next { right: 8px; }
 
 /* RUNNING TEXT */
-.running-text-box {
-  width: 100%; background: rgba(0,0,0,0.5);
-  border-top: 1px solid rgba(217, 119, 6, 0.2); border-bottom: 1px solid rgba(217, 119, 6, 0.2);
-  overflow: hidden; white-space: nowrap; margin: 10px 0; padding: 10px 0;
-}
-.text-moving {
-  display: inline-block; padding-left: 100%; font-size: 11px; font-weight: 700;
-  color: #fff; animation: scroll-text 20s linear infinite;
-}
+.running-text-box { width: 100%; background: rgba(0,0,0,0.5); border-top: 1px solid rgba(217, 119, 6, 0.2); border-bottom: 1px solid rgba(217, 119, 6, 0.2); overflow: hidden; white-space: nowrap; margin: 10px 0; padding: 10px 0; }
+.text-moving { display: inline-block; padding-left: 100%; font-size: 11px; font-weight: 700; color: #fff; animation: scroll-text 20s linear infinite; }
 @keyframes scroll-text { 0% { transform: translateX(0); } 100% { transform: translateX(-100%); } }
 
-/* FORM CONTAINER */
-.container {
-  width: 92%; max-width: 400px; background: rgba(20, 20, 20, 0.85); border-radius: 20px;
-  border: 1px solid var(--border); padding: 25px; margin-bottom: 15px; text-align: center; box-sizing: border-box;
-}
-
-.timer-box {
-  background: rgba(217, 119, 6, 0.1); border: 1px dashed var(--primary); padding: 8px;
-  border-radius: 10px; margin-bottom: 20px; font-size: 12px; font-weight: 700; color: var(--primary);
-}
-
+/* FORM */
+.container { width: 92%; max-width: 400px; background: rgba(20, 20, 20, 0.85); border-radius: 20px; border: 1px solid var(--border); padding: 25px; margin-bottom: 15px; text-align: center; box-sizing: border-box; }
+.timer-box { background: rgba(217, 119, 6, 0.1); border: 1px dashed var(--primary); padding: 8px; border-radius: 10px; margin-bottom: 20px; font-size: 12px; font-weight: 700; color: var(--primary); }
 h1 { font-family: var(--font-head); font-size: 22px; margin: 0 0 5px; color: #fff; }
-
-input {
-  width: 100%; padding: 14px; margin-bottom: 10px; border-radius: 10px;
-  border: 1px solid var(--border); font-size: 14px; background: rgba(0, 0, 0, 0.5); 
-  box-sizing: border-box; color: white; outline: none;
-}
-
-.main-btn {
-  width: 100%; background: linear-gradient(90deg, #d97706, #fbbf24); color: #fff; border: none;
-  padding: 16px; border-radius: 10px; font-size: 15px; font-weight: 800; cursor: pointer;
-  text-transform: uppercase; letter-spacing: 1px;
-}
-
+input { width: 100%; padding: 14px; margin-bottom: 10px; border-radius: 10px; border: 1px solid var(--border); font-size: 14px; background: rgba(0, 0, 0, 0.5); box-sizing: border-box; color: white; outline: none; }
+.main-btn { width: 100%; background: linear-gradient(90deg, #d97706, #fbbf24); color: #fff; border: none; padding: 16px; border-radius: 10px; font-size: 15px; font-weight: 800; cursor: pointer; text-transform: uppercase; }
 .progress-container { width: 100%; height: 6px; background: rgba(255, 255, 255, 0.1); border-radius: 10px; margin: 15px 0; display: none; overflow: hidden; }
 .progress-bar { height: 100%; width: 0%; background: var(--primary); }
 
-/* HISTORY */
+/* LIVE NOTIFICATION STYLE */
+.live-notif {
+  position: fixed; bottom: 20px; left: 20px; background: #111; padding: 10px 15px;
+  border-radius: 12px; border: 1px solid var(--border); font-size: 11px; z-index: 9999;
+  display: flex; align-items: center; gap: 10px; box-shadow: 0 5px 15px rgba(0,0,0,0.5);
+  animation: slideIn 0.5s ease-out forwards;
+}
+@keyframes slideIn { from { transform: translateX(-120%); } to { transform: translateX(0); } }
+@keyframes slideOut { from { transform: translateX(0); opacity: 1; } to { transform: translateX(-120%); opacity: 0; } }
+
+/* HISTORY & FOOTER */
 .history-scroll { max-height: 200px; overflow-y: auto; }
 .history-table { width: 100%; border-collapse: collapse; font-size: 12px; }
 .history-table td { padding: 10px 5px; color: #bbb; border-bottom: 1px solid rgba(217, 119, 6, 0.05); }
 .amt-col { font-weight: 800; color: var(--primary); text-align: right; }
-
-/* FOOTER */
 .footer-banner { width: 92%; max-width: 400px; margin: 10px 0 30px; border-radius: 12px; overflow: hidden; border: 1px solid var(--border); }
 .footer-banner img { width: 100%; display: block; }
 
-/* SUCCESS MODAL */
-.modal {
-  display: none; position: fixed; left: 0; top: 0; width: 100%; height: 100%;
-  background: rgba(0, 0, 0, 0.9); justify-content: center; align-items: center; z-index: 10000;
-}
+/* MODAL */
+.modal { display: none; position: fixed; left: 0; top: 0; width: 100%; height: 100%; background: rgba(0, 0, 0, 0.9); justify-content: center; align-items: center; z-index: 10000; }
 .modal-content { background: #111; padding: 30px; border-radius: 20px; width: 80%; max-width: 300px; text-align: center; border: 1px solid var(--border); }
 .cs-btn { display: block; width: 100%; background: #25d366; color: #fff; text-decoration: none; padding: 14px; border-radius: 10px; font-weight: 700; margin-top: 15px; font-size: 14px; }
 </style>
 </head>
 <body>
 
+<div id="notif-container"></div>
+
 <div class="top-bar">
     <div class="top-bar-content">
-        <div class="menu-burger" onclick="toggleMenu()">
-            <span></span><span></span><span></span>
-        </div>
+        <div class="menu-burger" onclick="toggleMenu()"><span></span><span></span><span></span></div>
         <img src="https://i.imgur.com/CH8VkaL.png" class="top-bar-logo" alt="Logo MAMPIR4D">
     </div>
 </div>
@@ -162,7 +119,7 @@ input {
 <div class="menu-overlay" id="menuOverlay" onclick="toggleMenu()"></div>
 <div class="side-menu" id="sideMenu">
   <div class="close-btn" onclick="toggleMenu()">×</div>
-  <div style="font-family: var(--font-head); color: var(--primary); font-size: 14px; margin-bottom: 25px; border-left: 3px solid var(--primary); padding-left: 10px; letter-spacing: 1px;">MAMPIR4D MENU</div>
+  <div style="font-family: var(--font-head); color: var(--primary); font-size: 14px; margin-bottom: 25px; border-left: 3px solid var(--primary); padding-left: 10px;">MAMPIR4D MENU</div>
   <a href="https://mampirdalam.com/">LOGIN</a>
   <a href="https://mampirdalam.com/">DAFTAR</a>
   <a href="https://mampirdalam.com/">TRANSAKSI</a>
@@ -172,50 +129,29 @@ input {
 <div class="slider-container">
   <button class="nav-btn prev" onclick="moveSlide(-1)">❮</button>
   <div class="slider-wrapper" id="sliderWrapper">
-    <img src="https://i.imgur.com/tslIcXL.png">
-    <img src="https://i.imgur.com/7QdWmhi.png">
-    <img src="https://i.imgur.com/28gSXXs.png">
-    <img src="https://i.imgur.com/3lBE44Q.png">
-    <img src="https://i.imgur.com/nenvvSY.png">
-    <img src="https://i.imgur.com/enu2hvH.png">
-    <img src="https://i.imgur.com/YpfoGRM.png">
-    <img src="https://i.imgur.com/6VN6juS.png">
+    <img src="https://i.imgur.com/tslIcXL.png"><img src="https://i.imgur.com/7QdWmhi.png"><img src="https://i.imgur.com/28gSXXs.png"><img src="https://i.imgur.com/3lBE44Q.png"><img src="https://i.imgur.com/nenvvSY.png"><img src="https://i.imgur.com/enu2hvH.png"><img src="https://i.imgur.com/YpfoGRM.png"><img src="https://i.imgur.com/6VN6juS.png">
   </div>
   <button class="nav-btn next" onclick="moveSlide(1)">❯</button>
 </div>
 
-<div class="running-text-box">
-  <div class="text-moving">
-    MAMPIR4D menampilkan pilihan menarik untuk semua kalangan. Dapatkan tantangan baru dan keseruan setiap harinya hanya di platform kami !!
-  </div>
-</div>
+<div class="running-text-box"><div class="text-moving">MAMPIR4D menampilkan pilihan menarik untuk semua kalangan. Dapatkan tantangan baru dan keseruan setiap harinya hanya di platform kami !!</div></div>
 
 <div class="container">
-  <div class="timer-box">
-    ⚡ KUOTA: <span id="quota">12</span> SLOT | <span id="timer">00:00:00</span>
-  </div>
+  <div class="timer-box">⚡ KUOTA: <span id="quota">12</span> SLOT | <span id="timer">00:00:00</span></div>
   <h1>Claim Freebet</h1>
   <p style="font-size: 11px; color: #bbb; margin-bottom: 20px;">Voucher: <b style="color:var(--primary)">MAMPIR4DCUAN</b></p>
-  
-  <input type="text" id="userId" placeholder="Input User ID ">
-  <input type="text" id="voucher" placeholder="Input Kode Voucher">
-  
+  <input type="text" id="userId" placeholder="Input User ID "><input type="text" id="voucher" placeholder="Input Kode Voucher">
   <button class="main-btn" onclick="claimFreebet()">AMBIL SALDO SEKARANG</button>
-
   <div class="progress-container" id="pCon"><div class="progress-bar" id="pBar"></div></div>
   <div id="msg" style="margin-top:10px; font-size:12px; font-weight:700;"></div>
 </div>
 
 <div class="container" style="padding: 15px;">
-  <div style="font-family: var(--font-head); font-size: 11px; margin-bottom: 12px; color: var(--primary); text-transform: uppercase; letter-spacing: 1px;">Recent Successful Claims</div>
-  <div class="history-scroll">
-    <table class="history-table" id="historyTable"></table>
-  </div>
+  <div style="font-family: var(--font-head); font-size: 11px; margin-bottom: 12px; color: var(--primary); text-transform: uppercase;">Recent Successful Claims</div>
+  <div class="history-scroll"><table class="history-table" id="historyTable"></table></div>
 </div>
 
-<div class="footer-banner">
-    <img src="https://i.imgur.com/8rBhMEk.png" alt="Mampir4d Footer">
-</div>
+<div class="footer-banner"><img src="https://i.imgur.com/8rBhMEk.png"></div>
 
 <div class="modal" id="popupModal">
   <div class="modal-content">
@@ -228,44 +164,55 @@ input {
 </div>
 
 <script>
-function toggleMenu() {
-    document.getElementById("sideMenu").classList.toggle("active");
-    document.getElementById("menuOverlay").classList.toggle("active");
-}
+function toggleMenu() { document.getElementById("sideMenu").classList.toggle("active"); document.getElementById("menuOverlay").classList.toggle("active"); }
 
 let curS = 0;
-function showSlide(n) {
-    const total = document.querySelectorAll("#sliderWrapper img").length;
-    if (n >= total) curS = 0; else if (n < 0) curS = total - 1; else curS = n;
-    document.getElementById("sliderWrapper").style.transform = `translateX(-${curS * 100}%)`;
-}
+function showSlide(n) { const total = document.querySelectorAll("#sliderWrapper img").length; if (n >= total) curS = 0; else if (n < 0) curS = total - 1; else curS = n; document.getElementById("sliderWrapper").style.transform = `translateX(-${curS * 100}%)`; }
 function moveSlide(n) { showSlide(curS + n); resetA(); }
 let aPlay = setInterval(() => moveSlide(1), 2500);
 function resetA() { clearInterval(aPlay); aPlay = setInterval(() => moveSlide(1), 2500); }
 
 const pref = ["MMP","WIN","VIP","GAC","JAX","LUX","PRO"];
 let hData = JSON.parse(localStorage.getItem("m4d_h")) || [];
-if(hData.length === 0) {
-    for(let i=0; i<20; i++) hData.push({id: pref[Math.floor(Math.random()*pref.length)]+Math.floor(Math.random()*8999+1000), amt: Math.floor(Math.random()*81+20)*1000});
-}
-function renderH() {
-    document.getElementById("historyTable").innerHTML = hData.map(i => `<tr><td style="font-weight:700">${i.id}</td><td class="amt-col">IDR ${i.amt.toLocaleString('id-ID')}</td></tr>`).join('');
-}
+if(hData.length === 0) { for(let i=0; i<20; i++) hData.push({id: pref[Math.floor(Math.random()*pref.length)]+Math.floor(Math.random()*8999+1000), amt: Math.floor(Math.random()*81+20)*1000}); }
+function renderH() { document.getElementById("historyTable").innerHTML = hData.map(i => `<tr><td style="font-weight:700">${i.id}</td><td class="amt-col">IDR ${i.amt.toLocaleString('id-ID')}</td></tr>`).join(''); }
 renderH();
 
-function sTimer(d, dp) {
-    let t = d, m, s;
-    setInterval(() => { m=parseInt(t/60,10); s=parseInt(t%60,10); dp.textContent=(m<10?"0"+m:m)+":"+(s<10?"0"+s:s); if(--t<0)t=d; }, 1000);
+// LIVE NOTIFICATION LOGIC
+function showLiveNotif() {
+    const container = document.getElementById('notif-container');
+    const randomUser = pref[Math.floor(Math.random()*pref.length)] + Math.floor(Math.random()*8999+1000);
+    const randomAmt = Math.floor(Math.random()*76+25) * 1000;
+    
+    const notif = document.createElement('div');
+    notif.className = 'live-notif';
+    notif.innerHTML = `
+        <div style="background:var(--primary); width:30px; height:30px; border-radius:50%; display:flex; align-items:center; justify-content:center; font-size:14px;">💰</div>
+        <div>
+            <div style="color:white; font-weight:bold;">${randomUser} Berhasil Klaim!</div>
+            <div style="color:var(--primary); font-size:10px;">IDR ${randomAmt.toLocaleString('id-ID')}</div>
+        </div>
+    `;
+    
+    container.appendChild(notif);
+    
+    setTimeout(() => {
+        notif.style.animation = 'slideOut 0.5s ease-in forwards';
+        setTimeout(() => notif.remove(), 500);
+    }, 4000);
 }
+
+// Munculkan notif setiap 7 detik
+setInterval(showLiveNotif, 7000);
+setTimeout(showLiveNotif, 2000); // Muncul pertama kali setelah 2 detik
+
+function sTimer(d, dp) { let t = d, m, s; setInterval(() => { m=parseInt(t/60,10); s=parseInt(t%60,10); dp.textContent=(m<10?"0"+m:m)+":"+(s<10?"0"+s:s); if(--t<0)t=d; }, 1000); }
 sTimer(1776, document.getElementById("timer"));
 
 function claimFreebet() {
     const id = document.getElementById("userId").value.trim().toUpperCase();
     const v = document.getElementById("voucher").value.trim();
-    if(!id || v !== "MAMPIR4DCUAN") {
-        document.getElementById("msg").innerHTML = "<span style='color:#fb7185;'>⚠️ ID atau Voucher Salah!</span>";
-        return;
-    }
+    if(!id || v !== "MAMPIR4DCUAN") { document.getElementById("msg").innerHTML = "<span style='color:#fb7185;'>⚠️ ID atau Voucher Salah!</span>"; return; }
     document.getElementById("pCon").style.display = "block";
     let w = 0;
     let t = setInterval(() => {
