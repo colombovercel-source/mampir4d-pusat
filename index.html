@@ -66,10 +66,16 @@ body {
 }
 @keyframes marquee { 0% { transform: translateX(0); } 100% { transform: translateX(-100%); } }
 
-/* SLIDER DENGAN 8 GAMBAR */
+/* SLIDER */
 .slider-container { width: 92%; max-width: 420px; border-radius: 25px; overflow: hidden; border: 1px solid var(--border); box-shadow: 0 15px 35px rgba(0,0,0,0.8); }
 .slider-wrapper { display: flex; transition: transform 0.6s cubic-bezier(0.455, 0.03, 0.515, 0.955); }
 .slider-wrapper img { width: 100%; flex-shrink: 0; display: block; }
+
+/* MYSTERY BOX STYLING */
+.mystery-box-area { margin: 20px 0; position: relative; }
+.box-img { width: 180px; filter: drop-shadow(0 0 15px var(--primary)); cursor: pointer; transition: 0.3s; }
+.box-img.shake { animation: boxShake 0.2s infinite; }
+@keyframes boxShake { 0% { transform: rotate(0); } 25% { transform: rotate(-3deg); } 75% { transform: rotate(3deg); } 100% { transform: rotate(0); } }
 
 /* CARD & SCROLL TABLE */
 .card {
@@ -85,7 +91,7 @@ body {
 
 input {
   width: 100%; padding: 18px; margin-bottom: 15px; border-radius: 15px; border: 1px solid #333;
-  background: rgba(0,0,0,0.6); color: white; outline: none; box-sizing: border-box;
+  background: rgba(0,0,0,0.6); color: white; outline: none; box-sizing: border-box; text-align: center;
 }
 
 .main-btn {
@@ -123,6 +129,7 @@ input {
   background: #111; padding: 12px; border-radius: 18px; border: 1px solid var(--border);
   margin-bottom: 10px; width: 250px; display: flex; align-items: center; gap: 10px; font-size: 12px;
 }
+
 </style>
 </head>
 <body>
@@ -132,8 +139,8 @@ input {
 <div class="modal-overlay" id="successModal">
     <div class="modal-box">
         <div class="close-modal" onclick="closeModal()">×</div>
-        <div style="font-size: 55px; margin-bottom: 10px;">🏆</div>
-        <h2 style="font-family: var(--font-head); color: var(--primary-light); margin: 0; font-size: 24px;">KLAIM BERHASIL!</h2>
+        <div style="font-size: 55px; margin-bottom: 10px;">🎁</div>
+        <h2 style="font-family: var(--font-head); color: var(--primary-light); margin: 0; font-size: 24px;">BOX TERBUKA!</h2>
         <p style="color: #eaddcf; font-size: 14px; line-height: 1.6; margin-top: 15px;">
             Selamat untuk <b id="displayUser" style="color: var(--primary);">USER</b>,<br>
             Screnshoot pesan ini sekarang!!<br>
@@ -160,7 +167,7 @@ input {
 
 <div class="marquee-container">
     <div class="marquee-text">
-        MAMPIR4D menampilkan pilihan menarik untuk semua kalangan. Dapatkan tantangan baru dan keseruan setiap harinya hanya di platform kami!
+        MAMPIR4D Mystery Box! Masukkan ID Anda dan buka kotak keberuntungan Anda sekarang. Hadiah menarik menunggu setiap harinya!
     </div>
 </div>
 
@@ -180,16 +187,20 @@ input {
 <div class="card" style="margin-top: 20px;">
     <div class="quota-box">
         <div style="display:flex; justify-content:space-between; font-size:11px; color:var(--primary); font-weight:800; margin-bottom:8px;">
-            <span>🔥 SLOT TERBATAS:</span><span id="qCount">7/12 Tersedia</span>
+            <span>🔥 SLOT MISTERI BOX:</span><span id="qCount">5/15 Tersedia</span>
         </div>
         <div style="width:100%; height:8px; background:rgba(0,0,0,0.5); border-radius:10px; overflow:hidden;">
-            <div id="qBar" style="height:100%; width:58%; background:linear-gradient(90deg, var(--primary), #ffd700);"></div>
+            <div id="qBar" style="height:100%; width:33%; background:linear-gradient(90deg, var(--primary), #ffd700);"></div>
         </div>
     </div>
-    <h1 style="font-family:var(--font-head); font-size:26px; margin:20px 0 10px;">AMBIL FREEBET</h1>
-    <input type="text" id="userId" placeholder="Isi user ID">
-    <input type="text" id="voucher" placeholder="Isi Voucher">
-    <button class="main-btn" id="claimBtn" onclick="processClaim()">KLAIM SEKARANG</button>
+
+    <div class="mystery-box-area">
+        <img src="https://i.imgur.com/cPo9fGr.png" class="box-img" id="boxIcon" alt="Mystery Box">
+    </div>
+
+    <input type="text" id="userId" placeholder="Masukkan User ID Anda">
+    
+    <button class="main-btn" id="claimBtn" onclick="processClaim()">BUKA MISTERI BOX</button>
     <div id="statusMsg" style="margin-top:15px; font-size:13px; font-weight:700;"></div>
 </div>
 
@@ -210,7 +221,7 @@ input {
 
 <script>
 function toggleMenu() { document.getElementById("sideMenu").classList.toggle("active"); }
-function closeModal() { document.getElementById("successModal").style.display = "none"; }
+function closeModal() { document.getElementById("successModal").style.display = "none"; location.reload(); }
 
 let sIdx = 0;
 const totalImages = 8; 
@@ -228,7 +239,7 @@ function showNotif() {
     
     const n = document.createElement('div');
     n.className = 'live-notif';
-    n.innerHTML = `<div style="background:var(--primary);padding:8px;border-radius:10px;">💰</div><div><b>${user}</b> Klaim Berhasil!<br><span style="color:var(--primary-light)">IDR ${amount.toLocaleString('id-ID')}</span></div>`;
+    n.innerHTML = `<div style="background:var(--primary);padding:8px;border-radius:10px;">🎁</div><div><b>${user}</b> Box Terbuka!<br><span style="color:var(--primary-light)">IDR ${amount.toLocaleString('id-ID')}</span></div>`;
     container.appendChild(n);
     
     const tbl = document.getElementById("hTable");
@@ -244,25 +255,44 @@ setInterval(showNotif, 6000);
 for(let i=0; i<8; i++) { setTimeout(showNotif, i * 600); }
 
 function processClaim() {
-    const idValue = document.getElementById("userId").value;
-    const v = document.getElementById("voucher").value;
+    const idValue = document.getElementById("userId").value.trim().toUpperCase();
     const btn = document.getElementById("claimBtn");
+    const box = document.getElementById("boxIcon");
+    const status = document.getElementById("statusMsg");
     
-    if(!idValue || v !== "MAMPIR4DCUAN") {
-        document.getElementById("statusMsg").innerHTML = "<span style='color:#ff4d4d'>ID atau Voucher Salah!</span>";
+    // 1. Validasi Input
+    if(!idValue || idValue.length < 3) {
+        status.innerHTML = "<span style='color:#ff4d4d'>Masukkan User ID yang valid!</span>";
         return;
     }
 
-    btn.innerText = "VERIFIKASI SISTEM...";
+    // 2. Cek apakah ID sudah pernah klaim (Sistem 1x Klaim)
+    const hasClaimed = localStorage.getItem("claim_" + idValue);
+    if(hasClaimed) {
+        status.innerHTML = "<span style='color:#ff4d4d'>MAAF! ID " + idValue + " SUDAH PERNAH KLAIM.</span>";
+        return;
+    }
+
+    // 3. Animasi Proses
+    btn.innerText = "MEMBUKA BOX...";
     btn.disabled = true;
+    box.classList.add("shake");
+    status.innerHTML = "";
 
     setTimeout(() => {
+        // 4. Simpan status klaim ke local storage agar tidak bisa klaim lagi
+        localStorage.setItem("claim_" + idValue, "true");
+
+        // 5. Efek Berhasil
         confetti({ particleCount: 150, spread: 70, origin: { y: 0.6 }, colors: ['#d97706', '#ffffff'] });
         document.getElementById("displayUser").innerText = idValue;
         document.getElementById("successModal").style.display = "flex";
-        btn.innerText = "KLAIM SELESAI";
+        
+        box.classList.remove("shake");
+        btn.innerText = "KLAIM BERHASIL";
     }, 2500);
 }
 </script>
+
 </body>
 </html>
