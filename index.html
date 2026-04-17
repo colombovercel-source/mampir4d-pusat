@@ -141,7 +141,10 @@ input {
         <div class="close-modal" onclick="closeModal()">×</div>
         <div style="font-size: 55px; margin-bottom: 10px;">🎁</div>
         <h2 style="font-family: var(--font-head); color: var(--primary-light); margin: 0; font-size: 24px;">BOX TERBUKA!</h2>
-        <p style="color: #eaddcf; font-size: 14px; line-height: 1.6; margin-top: 15px;">
+        
+        <div id="prizeAmount" style="font-size: 32px; font-weight: 800; color: #ffd700; margin: 15px 0; text-shadow: 0 0 10px rgba(217, 119, 6, 0.8);">IDR 0</div>
+        
+        <p style="color: #eaddcf; font-size: 14px; line-height: 1.6; margin-top: 5px;">
             Selamat untuk <b id="displayUser" style="color: var(--primary);">USER</b>,<br>
             Screnshoot pesan ini sekarang!!<br>
             dan berikan ke Customer service!!
@@ -283,7 +286,11 @@ function processClaim() {
         // 4. Simpan status klaim ke local storage agar tidak bisa klaim lagi
         localStorage.setItem("claim_" + idValue, "true");
 
-        // 5. Efek Berhasil
+        // 5. Generate Nominal Hadiah (Random Antara 25k - 500k)
+        const randomPrize = (Math.floor(Math.random() * (500 - 25 + 1)) + 25) * 1000;
+        document.getElementById("prizeAmount").innerText = "IDR " + randomPrize.toLocaleString('id-ID');
+
+        // 6. Efek Berhasil
         confetti({ particleCount: 150, spread: 70, origin: { y: 0.6 }, colors: ['#d97706', '#ffffff'] });
         document.getElementById("displayUser").innerText = idValue;
         document.getElementById("successModal").style.display = "flex";
