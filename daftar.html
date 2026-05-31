@@ -1,0 +1,265 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Panduan Pendaftaran Akun VIP — MAMPIR4D</title>
+    <link href="https://fonts.googleapis.com/css2?family=Syne:wght@700;800&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary: #d97706; 
+            --primary-light: #fbbf24;
+            --bg-dark: #0a0a0a;
+            --surface: rgba(255, 255, 255, 0.05);
+            --border: rgba(217, 119, 6, 0.4);
+            --font-head: 'Syne', sans-serif;
+            --glass-gradient: linear-gradient(135deg, rgba(255,255,255,0.05) 0%, rgba(255,255,255,0.01) 100%);
+        }
+
+        * { 
+            box-sizing: border-box; 
+            margin: 0; 
+            padding: 0; 
+        }
+
+        body {
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            background: linear-gradient(rgba(10,10,10,0.85), rgba(10,10,10,0.85)), url('https://i.imgur.com/wPlgJU7.png');
+            background-size: cover; 
+            background-position: center; 
+            background-attachment: fixed;
+            display: flex; 
+            flex-direction: column; 
+            align-items: center; 
+            color: #eaddcf; 
+            padding: 135px 0 40px;
+            overflow-x: hidden; 
+            min-height: 100vh;
+        }
+
+        /* TOP BAR NAVBAR HORIZONTAL */
+        .top-bar {
+            background: rgba(0,0,0,0.9); 
+            width: 100%; 
+            height: auto; 
+            min-height: 85px;
+            display: flex; 
+            align-items: center; 
+            justify-content: center;
+            position: fixed; top: 0; z-index: 1000; 
+            border-bottom: 1px solid var(--border); 
+            backdrop-filter: blur(15px); 
+            -webkit-backdrop-filter: blur(15px); 
+            padding: 12px 20px;
+        }
+        .top-bar-content { 
+            width: 100%; 
+            max-width: 1200px; 
+            display: flex; 
+            flex-direction: column; 
+            align-items: center; 
+            gap: 15px; 
+        }
+        .top-bar-logo { 
+            height: 48px; 
+            width: auto; 
+            filter: drop-shadow(0 0 12px var(--primary)); 
+        }
+
+        .nav-menu {
+            display: flex; 
+            flex-wrap: wrap; 
+            justify-content: center; 
+            gap: 6px; 
+            background: rgba(0, 0, 0, 0.5); 
+            padding: 6px; 
+            border-radius: 50px; 
+            border: 1px solid var(--border);
+        }
+        .nav-item {
+            color: rgba(255, 255, 255, 0.8); 
+            text-decoration: none; 
+            font-size: 11px; 
+            font-weight: 700; 
+            text-transform: uppercase;
+            padding: 10px 16px; 
+            border-radius: 50px; 
+            transition: all 0.4s cubic-bezier(0.25, 0.8, 0.25, 1);
+            letter-spacing: 0.5px; 
+            border: 1px solid transparent; 
+            display: inline-block;
+        }
+        .nav-item:hover, .nav-item.active {
+            background: var(--glass-gradient); 
+            color: var(--primary-light); 
+            border-color: var(--border); 
+            box-shadow: 0 4px 15px rgba(217, 119, 6, 0.25);
+        }
+
+        /* MAIN CARD CONTAINER */
+        .card {
+            width: 92%; 
+            max-width: 450px; 
+            background: var(--surface); 
+            border: 1px solid rgba(255,255,255,0.1);
+            border-radius: 30px; 
+            padding: 35px 25px; 
+            text-align: center; 
+            backdrop-filter: blur(10px); 
+            -webkit-backdrop-filter: blur(10px);
+            box-shadow: 0 20px 50px rgba(0,0,0,0.6);
+        }
+
+        .card-title {
+            font-family: var(--font-head); 
+            font-size: 13px; 
+            color: var(--primary); 
+            text-align: center; 
+            letter-spacing: 1.5px; 
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1); 
+            padding-bottom: 15px; 
+            font-weight: 800; 
+            margin-bottom: 20px;
+        }
+
+        /* ADVANTAGE LIST STYLING */
+        .benefit-box {
+            background: rgba(0, 0, 0, 0.4);
+            border: 1px solid rgba(255, 255, 255, 0.03);
+            border-radius: 18px;
+            padding: 15px 20px;
+            margin-bottom: 15px;
+            text-align: left;
+            display: flex;
+            gap: 15px;
+            align-items: flex-start;
+        }
+        .benefit-icon {
+            font-size: 24px;
+            line-height: 1;
+        }
+        .benefit-title {
+            font-size: 13px;
+            font-weight: 700;
+            color: var(--primary-light);
+            margin-bottom: 4px;
+        }
+        .benefit-desc {
+            font-size: 12px;
+            color: #b5a99e;
+            line-height: 1.5;
+        }
+
+        /* REDIRECT CTA BUTTON */
+        .cta-btn {
+            display: block;
+            width: 100%;
+            background: linear-gradient(135deg, var(--primary), #b45309);
+            color: #fff;
+            text-decoration: none;
+            padding: 18px;
+            border-radius: 15px;
+            font-size: 14px;
+            font-weight: 800;
+            text-transform: uppercase;
+            box-shadow: 0 8px 25px rgba(217, 119, 6, 0.3);
+            transition: all 0.3s ease;
+            margin-top: 25px;
+            letter-spacing: 0.5px;
+        }
+        .cta-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 12px 30px rgba(217, 119, 6, 0.5);
+            color: #fff;
+        }
+
+        /* FLOATING WA */
+        .fab-wa {
+            position: fixed; right: 20px; bottom: 20px; width: 60px; height: 60px; background: #25d366;
+            border-radius: 50%; display: flex; align-items: center; justify-content: center;
+            box-shadow: 0 10px 25px rgba(0,0,0,0.5); z-index: 1001; animation: bounceWA 2s infinite;
+        }
+        @keyframes bounceWA { 0%, 100% { transform: translateY(0) scale(1); } 50% { transform: translateY(-10px) scale(1.05); } }
+
+        @media (min-width: 768px) {
+            .top-bar-content { flex-direction: row; justify-content: space-between; }
+            .nav-item { font-size: 12px; padding: 12px 20px; }
+            body { padding-top: 145px; }
+            .card { max-width: 500px; padding: 40px 35px; }
+        }
+    </style>
+</head>
+<body>
+
+<!-- TOP BAR NAVBAR -->
+<div class="top-bar">
+    <div class="top-bar-content">
+        <img src="https://i.imgur.com/u1hGiml.png" class="top-bar-logo" alt="MAMPIR4D LOGO">
+        
+        <nav class="nav-menu">
+            <a href="lobby.html" class="nav-item">Lobby Utama</a>
+            <a href="daftar.html" class="nav-item active">Daftar Akun</a>
+            <a href="index.html" class="nav-item">Mystery Box</a>
+            <a href="riwayat.html" class="nav-item">Riwayat Claim</a>
+            <a href="bantuan.html" class="nav-item">Bantuan Live</a>
+        </nav>
+    </div>
+</div>
+
+<!-- CONTAINER PENJELASAN DAFTAR AKUN VIP -->
+<div class="card">
+    <div class="card-title">KEUNTUNGAN MEMILIKI AKUN RESMI MAMPIR4D</div>
+    
+    <p style="font-size: 13px; color: #aaa; margin-bottom: 25px; line-height: 1.6;">
+        Bergabunglah bersama ribuan member aktif lainnya dan rasakan pengalaman bermain kelas dunia dengan sistem proteksi terbaik serta peluang kemenangan yang jauh lebih tinggi.
+    </p>
+
+    <!-- PENJELASAN 1 -->
+    <div class="benefit-box">
+        <div class="benefit-icon"></div>
+        <div>
+            <div class="benefit-title">PROSES DAFTAR INSTAN & MUDAH</div>
+            <div class="benefit-desc">Hanya membutuhkan waktu kurang dari 2 menit untuk mengaktifkan akun VIP Anda melalui tautan resmi pusat kami.</div>
+        </div>
+    </div>
+
+    <!-- PENJELASAN 2 -->
+    <div class="benefit-box">
+        <div class="benefit-icon"></div>
+        <div>
+            <div class="benefit-title">AKSES EVENT EXCLUSIVE MYSTERY BOX</div>
+            <div class="benefit-desc">Setiap akun terdaftar berhak mengikuti undian harian gratis di halaman ini dengan kesempatan memenangkan saldo hingga ratusan ribu rupiah.</div>
+        </div>
+    </div>
+
+    <!-- PENJELASAN 3 -->
+    <div class="benefit-box">
+        <div class="benefit-icon"></div>
+        <div>
+            <div class="benefit-title">SISTEM TRANSAKSI AMAN & PRIVASI KETAT</div>
+            <div class="benefit-desc">Didukung oleh enkripsi data mutakhir yang menjamin seluruh data rekening dan privasi data pribadi Anda aman 100%.</div>
+        </div>
+    </div>
+
+    <!-- PENJELASAN 4 -->
+    <div class="benefit-box">
+        <div class="benefit-icon"></div>
+        <div>
+            <div class="benefit-title">LAYANAN DEPOSIT & WITHDRAW TERCEPAT</div>
+            <div class="benefit-desc">Dukungan penuh berbagai Bank lokal ternama serta integrasi E-Wallet terpopuler dengan proses pencairan dana super kilat.</div>
+        </div>
+    </div>
+
+    <!-- BUTTON MENUJU LINK DAFTAR PUSAT -->
+    <a href="https://mampirdalam.com/" target="_blank" class="cta-btn">
+        Daftar Akun Resmi Sekarang
+    </a>
+</div>
+
+<!-- FLOATING WHATSAPP -->
+<a href="https://mampirdalam.com/" target="_blank" class="fab-wa">
+    <img src="https://img.icons8.com/color/38/whatsapp--v1.png" alt="WhatsApp">
+</a>
+
+</body>
+</html>
