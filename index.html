@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Official Claim System — MAMPIR4D Professional</title>
+    <title>Mystery Box Premium — MAMPIR4D</title>
     <link href="https://fonts.googleapis.com/css2?family=Syne:wght@700;800&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
     <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.6.0/dist/confetti.browser.min.js"></script>
     <style>
@@ -17,10 +17,10 @@
             --glass-gradient: linear-gradient(135deg, rgba(255,255,255,0.05) 0%, rgba(255,255,255,0.01) 100%);
         }
 
-        * {
-            box-sizing: border-box;
-            margin: 0;
-            padding: 0;
+        * { 
+            box-sizing: border-box; 
+            margin: 0; 
+            padding: 0; 
         }
 
         body {
@@ -34,10 +34,11 @@
             align-items: center; 
             color: #eaddcf; 
             padding: 135px 0 40px;
-            overflow-x: hidden;
+            overflow-x: hidden; 
+            min-height: 100vh;
         }
 
-        /* TOP BAR WITH HORIZONTAL MENU */
+        /* TOP BAR NAVBAR HORIZONTAL */
         .top-bar {
             background: rgba(0,0,0,0.9); 
             width: 100%; 
@@ -46,12 +47,10 @@
             display: flex; 
             align-items: center; 
             justify-content: center;
-            position: fixed; 
-            top: 0; 
-            z-index: 1000; 
+            position: fixed; top: 0; z-index: 1000; 
             border-bottom: 1px solid var(--border); 
-            backdrop-filter: blur(15px);
-            -webkit-backdrop-filter: blur(15px);
+            backdrop-filter: blur(15px); 
+            -webkit-backdrop-filter: blur(15px); 
             padding: 12px 20px;
         }
         .top-bar-content { 
@@ -73,7 +72,7 @@
             flex-wrap: wrap; 
             justify-content: center; 
             gap: 6px; 
-            background: rgba(0, 0, 0, 0.5);
+            background: rgba(0, 0, 0, 0.5); 
             padding: 6px; 
             border-radius: 50px; 
             border: 1px solid var(--border);
@@ -93,69 +92,12 @@
         }
         .nav-item:hover, .nav-item.active {
             background: var(--glass-gradient); 
-            color: var(--primary-light);
+            color: var(--primary-light); 
             border-color: var(--border); 
             box-shadow: 0 4px 15px rgba(217, 119, 6, 0.25);
         }
 
-        /* RUNNING TEXT */
-        .marquee-container {
-            width: 92%; 
-            max-width: 420px; 
-            background: rgba(217, 119, 6, 0.15); 
-            border: 1px solid var(--border); 
-            border-radius: 50px; 
-            padding: 10px 0;
-            margin: 15px 0; 
-            overflow: hidden; 
-            white-space: nowrap;
-        }
-        .marquee-text {
-            display: inline-block; 
-            padding-left: 100%; 
-            color: var(--primary-light);
-            font-size: 13px; 
-            font-weight: 600; 
-            animation: marquee 20s linear infinite;
-        }
-        @keyframes marquee { 0% { transform: translateX(0); } 100% { transform: translateX(-100%); } }
-
-        /* SLIDER */
-        .slider-container { 
-            width: 92%; 
-            max-width: 420px; 
-            border-radius: 25px; 
-            overflow: hidden; 
-            border: 1px solid var(--border); 
-            box-shadow: 0 15px 35px rgba(0,0,0,0.8); 
-        }
-        .slider-wrapper { 
-            display: flex; 
-            transition: transform 0.6s cubic-bezier(0.455, 0.03, 0.515, 0.955); 
-        }
-        .slider-wrapper img { 
-            width: 100%; 
-            flex-shrink: 0; 
-            display: block; 
-        }
-
-        /* MYSTERY BOX STYLING */
-        .mystery-box-area { 
-            margin: 25px 0; 
-            position: relative; 
-        }
-        .box-img { 
-            width: 180px; 
-            filter: drop-shadow(0 0 15px var(--primary)); 
-            cursor: pointer; 
-            transition: 0.3s; 
-        }
-        .box-img.shake { 
-            animation: boxShake 0.2s infinite; 
-        }
-        @keyframes boxShake { 0% { transform: rotate(0); } 25% { transform: rotate(-3deg); } 75% { transform: rotate(3deg); } 100% { transform: rotate(0); } }
-
-        /* MAIN CARD */
+        /* MAIN CARD MYSTERY BOX */
         .card {
             width: 92%; 
             max-width: 420px; 
@@ -163,24 +105,58 @@
             border: 1px solid rgba(255,255,255,0.1);
             border-radius: 30px; 
             padding: 35px 25px; 
-            margin-top: 20px; 
             text-align: center; 
             backdrop-filter: blur(10px); 
             -webkit-backdrop-filter: blur(10px);
+            box-shadow: 0 20px 50px rgba(0,0,0,0.6);
+        }
+
+        .card-title {
+            font-family: var(--font-head); 
+            font-size: 13px; 
+            color: var(--primary); 
+            text-align: center; 
+            letter-spacing: 1.5px; 
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1); 
+            padding-bottom: 15px; 
+            font-weight: 800; 
+            margin-bottom: 25px;
+        }
+
+        /* BOX IMAGES STYLE */
+        .box-container {
+            position: relative;
+            width: 180px;
+            height: 180px;
+            margin: 0 auto 25px;
+            cursor: pointer;
+        }
+        .box-img {
+            width: 100%;
+            height: 100%;
+            object-fit: contain;
+            transition: transform 0.3s ease;
+        }
+        .box-container:hover .box-img {
+            transform: scale(1.05);
         }
 
         input {
             width: 100%; 
-            padding: 18px; 
-            margin-bottom: 15px; 
-            border-radius: 15px; 
+            padding: 16px; 
+            border-radius: 14px; 
             border: 1px solid #333;
             background: rgba(0,0,0,0.6); 
             color: white; 
             outline: none; 
-            text-align: center;
-            font-size: 15px;
+            font-size: 14px;
             font-weight: 600;
+            text-align: center;
+            transition: border-color 0.3s ease;
+            margin-bottom: 15px;
+        }
+        input:focus {
+            border-color: var(--primary);
         }
 
         .main-btn {
@@ -188,40 +164,41 @@
             background: linear-gradient(135deg, var(--primary), #b45309); 
             color: #fff; 
             border: none;
-            padding: 20px; 
-            border-radius: 15px; 
-            font-size: 16px; 
+            padding: 18px; 
+            border-radius: 14px; 
+            font-size: 14px; 
             font-weight: 800; 
             cursor: pointer; 
             text-transform: uppercase;
             box-shadow: 0 8px 20px rgba(217, 119, 6, 0.3);
             transition: 0.3s;
+            letter-spacing: 0.5px;
         }
-        .main-btn:hover:not(:disabled) {
+        .main-btn:hover {
             transform: translateY(-2px);
             box-shadow: 0 12px 25px rgba(217, 119, 6, 0.5);
         }
-        .main-btn:disabled {
-            background: #444;
-            cursor: not-allowed;
-            box-shadow: none;
-        }
 
-        /* MODAL POPUP */
+        /* MODAL KEMENANGAN POP UP */
         .modal-overlay {
             position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.9);
             display: none; align-items: center; justify-content: center; z-index: 10000; backdrop-filter: blur(12px);
             -webkit-backdrop-filter: blur(12px);
         }
         .modal-box {
-            background: #0d0d0d; width: 92%; max-width: 380px; padding: 45px 25px 30px; border-radius: 35px;
-            border: 1px solid var(--border); text-align: center; position: relative;
+            background: #0d0d0d; width: 92%; max-width: 380px; padding: 40px 25px 30px; border-radius: 35px;
+            border: 1px solid var(--border); text-align: center;
         }
-        .close-modal { position: absolute; top: 20px; right: 20px; font-size: 26px; color: #888; cursor: pointer; }
-
+        .prize-display {
+            background: linear-gradient(135deg, #1e1b18 0%, #0a0a0a 100%);
+            border: 1px solid var(--border);
+            padding: 20px;
+            border-radius: 20px;
+            margin: 20px 0;
+        }
         .chat-btn {
-            display: block; background: linear-gradient(135deg, var(--primary), #b45309); color: white; text-decoration: none;
-            padding: 18px; border-radius: 15px; font-weight: 800; margin-top: 25px; text-transform: uppercase; letter-spacing: 0.5px;
+            display: block; background: linear-gradient(135deg, #25d366, #128c7e); color: white; text-decoration: none;
+            padding: 16px; border-radius: 14px; font-weight: 800; margin-top: 20px; text-transform: uppercase; font-size: 14px;
         }
 
         /* FLOATING WA */
@@ -232,14 +209,6 @@
         }
         @keyframes bounceWA { 0%, 100% { transform: translateY(0) scale(1); } 50% { transform: translateY(-10px) scale(1.05); } }
 
-        /* NOTIF POPUP */
-        #notif-container { position: fixed; bottom: 30px; left: 20px; z-index: 9999; }
-        .live-notif {
-            background: #111; padding: 12px; border-radius: 18px; border: 1px solid var(--border);
-            margin-bottom: 10px; width: 250px; display: flex; align-items: center; gap: 10px; font-size: 12px;
-            transition: opacity 0.5s ease;
-        }
-
         @media (min-width: 768px) {
             .top-bar-content { flex-direction: row; justify-content: space-between; }
             .nav-item { font-size: 12px; padding: 12px 20px; }
@@ -249,147 +218,102 @@
 </head>
 <body>
 
-<div id="notif-container"></div>
-
-<div class="modal-overlay" id="successModal">
+<!-- MODAL POP UP HADIAH WINNER -->
+<div class="modal-overlay" id="prizeModal">
     <div class="modal-box">
-        <div class="close-modal" onclick="closeModal()">×</div>
-        <div style="font-size: 55px; margin-bottom: 10px;">🎁</div>
-        <h2 style="font-family: var(--font-head); color: var(--primary-light); margin: 0; font-size: 24px;">BOX TERBUKA!</h2>
+        <div style="font-size: 55px; margin-bottom: 5px;">🎉</div>
+        <h2 style="font-family: var(--font-head); color: var(--primary-light); font-size: 20px; text-transform: uppercase;">SELAMAT KLAIM SUKSES!</h2>
+        <p style="color:#aaa; font-size:12px; margin-top:5px;">User ID Anda terverifikasi memenangkan hadiah harian:</p>
         
-        <div id="prizeAmount" style="font-size: 32px; font-weight: 800; color: #ffd700; margin: 15px 0; text-shadow: 0 0 10px rgba(217, 119, 6, 0.8);">IDR 0</div>
-        
-        <p style="color: #eaddcf; font-size: 14px; line-height: 1.6; margin-top: 5px;">
-            Selamat untuk <b id="displayUser" style="color: var(--primary);">USER</b>,<br>
-            Screenshot pesan ini sekarang!!<br>
-            dan berikan ke Customer service!!
+        <div class="prize-display">
+            <div style="font-size: 11px; color:#888; font-weight:700; text-transform: uppercase;">BONUS MYSTERY BOX</div>
+            <div id="winPrize" style="font-size: 28px; font-weight:800; color:#ffd700; text-shadow: 0 0 10px rgba(217,119,6,0.5); margin:5px 0;">IDR 0</div>
+            <div id="winUser" style="font-size: 12px; color:#fff; font-weight:600; opacity: 0.8;">USER: ID</div>
+        </div>
+
+        <p style="color: #eaddcf; font-size: 13px; line-height: 1.5;">
+            Ambil screenshot bukti ini dan segera kirimkan ke Live Chat atau Admin Bantuan kami untuk proses pencairan saldo bonus Anda!
         </p>
-        <a href="https://t.me/Macthaaaloo" target="_blank" class="chat-btn">KLAIM ADMIN TELEGRAM</a>
+        <a href="bantuan.html" class="chat-btn" style="background: linear-gradient(135deg, var(--primary), #b45309);">PROSES SEKARANG VIA PUSAT BANTUAN</a>
     </div>
 </div>
 
+<!-- TOP BAR NAVBAR -->
 <div class="top-bar">
     <div class="top-bar-content">
         <img src="https://i.imgur.com/u1hGiml.png" class="top-bar-logo" alt="MAMPIR4D LOGO">
+        
         <nav class="nav-menu">
             <a href="lobby.html" class="nav-item">Lobby Utama</a>
-            <a href="https://mampirdalam.com/" target="_blank" class="nav-item">Daftar Akun</a>
+            <a href="daftar.html" class="nav-item">Daftar Akun</a>
             <a href="index.html" class="nav-item active">Mystery Box</a>
             <a href="riwayat.html" class="nav-item">Riwayat Claim</a>
-            <a href="https://mampirdalam.com/" target="_blank" class="nav-item">Bantuan Live</a>
+            <a href="bantuan.html" class="nav-item">Bantuan Live</a>
         </nav>
     </div>
 </div>
 
-<div class="marquee-container">
-    <div class="marquee-text">
-        MAMPIR4D Mystery Box! Masukkan ID Anda dan buka kotak keberuntungan Anda sekarang. Hadiah menarik menunggu setiap harinya!
-    </div>
-</div>
-
-<div class="slider-container">
-    <div class="slider-wrapper" id="slider">
-        <img src="https://i.imgur.com/tslIcXL.png">
-        <img src="https://i.imgur.com/7QdWmhi.png">
-        <img src="https://i.imgur.com/28gSXXs.png">
-        <img src="https://i.imgur.com/3lBE44Q.png">
-        <img src="https://i.imgur.com/nenvvSY.png">
-        <img src="https://i.imgur.com/enu2hvH.png">
-        <img src="https://i.imgur.com/YpfoGRM.png">
-        <img src="https://i.imgur.com/6VN6juS.png">
-    </div>
-</div>
-
+<!-- CONTAINER UTAMA UNTUK EVENT KLAIM BOX -->
 <div class="card">
-    <div class="quota-box">
-        <div style="display:flex; justify-content:space-between; font-size:11px; color:var(--primary); font-weight:800; margin-bottom:8px;">
-            <span>🔥 SLOT MISTERI BOX:</span><span id="qCount">5/15 Tersedia</span>
-        </div>
-        <div style="width:100%; height:8px; background:rgba(0,0,0,0.5); border-radius:10px; overflow:hidden;">
-            <div id="qBar" style="height:100%; width:33%; background:linear-gradient(90deg, var(--primary), #ffd700);"></div>
-        </div>
-    </div>
-
-    <div class="mystery-box-area">
-        <img src="https://i.imgur.com/cPo9fGr.png" class="box-img" id="boxIcon" alt="Mystery Box">
-    </div>
-
-    <input type="text" id="userId" placeholder="Masukkan User ID Anda">
+    <div class="card-title">EVENT BULANAN EXCLUSIVE MYSTERY BOX</div>
     
-    <button class="main-btn" id="claimBtn" onclick="processClaim()">BUKA MISTERI BOX</button>
-    <div id="statusMsg" style="margin-top:15px; font-size:13px; font-weight:700;"></div>
+    <div class="box-container" onclick="triggerClaim()">
+        <!-- Tautan gambar baru yang diperbarui -->
+        <img src="https://i.imgur.com/YYS3RMW.png" id="boxAnimate" class="box-img" alt="Mystery Box Premium">
+    </div>
+
+    <form onsubmit="handleClaimForm(event)">
+        <input type="text" id="userIdInput" placeholder="MASUKKAN USER ID ANDA" required minlength="3">
+        <button type="submit" class="main-btn">BUKA MISTERI BOX</button>
+    </form>
 </div>
 
-<div class="footer-banner" style="width: 92%; max-width: 420px; margin-bottom: 50px; margin-top: 20px; border-radius: 20px; overflow: hidden; border: 1px solid rgba(255,255,255,0.05);">
-    <img src="https://i.imgur.com/8rBhMEk.png" width="100%">
-</div>
-
-<a href="https://mampirdalam.com/" target="_blank" class="fab-wa">
+<!-- FLOATING WHATSAPP -->
+<a href="bantuan.html" class="fab-wa">
     <img src="https://img.icons8.com/color/38/whatsapp--v1.png" alt="WhatsApp">
 </a>
 
 <script>
-function closeModal() { document.getElementById("successModal").style.display = "none"; location.reload(); }
-
-// Slider Rotator
-let sIdx = 0;
-const totalImages = 8; 
-setInterval(() => {
-    sIdx = (sIdx + 1) % totalImages;
-    const slider = document.getElementById("slider");
-    if(slider) slider.style.transform = `translateX(-${sIdx * 100}%)`;
-}, 4000);
-
-// Live Popup Notifikasi Saja (Tanpa Manipulasi Tabel)
-function showNotif() {
-    const container = document.getElementById('notif-container');
-    const uPrefix = ["WIN","BOSS","JP","VIP","MEGA","LUCKY"];
-    const user = uPrefix[Math.floor(Math.random()*uPrefix.length)] + Math.floor(Math.random()*89+10) + "***";
-    const amount = (Math.floor(Math.random() * (300 - 20 + 1)) + 20) * 1000;
-    
-    const n = document.createElement('div');
-    n.className = 'live-notif';
-    n.innerHTML = `<div style="background:var(--primary);padding:8px;border-radius:10px;">🎁</div><div><b>${user}</b> Box Terbuka!<br><span style="color:var(--primary-light)">IDR ${amount.toLocaleString('id-ID')}</span></div>`;
-    container.appendChild(n);
-    
-    setTimeout(() => { n.style.opacity="0"; setTimeout(()=>n.remove(),500); }, 4000);
+function handleClaimForm(e) {
+    e.preventDefault();
+    triggerClaim();
 }
-setInterval(showNotif, 6000);
 
-function processClaim() {
-    const idValue = document.getElementById("userId").value.trim().toUpperCase();
-    const btn = document.getElementById("claimBtn");
-    const box = document.getElementById("boxIcon");
-    const status = document.getElementById("statusMsg");
+function triggerClaim() {
+    const userInput = document.getElementById("userIdInput").value.trim();
     
-    if(!idValue || idValue.length < 3) {
-        status.innerHTML = "<span style='color:#ff4d4d'>Masukkan User ID yang valid!</span>";
+    if (userInput === "") {
+        alert("Silakan masukkan User ID resmi Anda terlebih dahulu untuk memulai pengundian!");
+        document.getElementById("userIdInput").focus();
         return;
     }
 
-    const hasClaimed = localStorage.getItem("claim_" + idValue);
-    if(hasClaimed) {
-        status.innerHTML = "<span style='color:#ff4d4d'>MAAF! ID " + idValue + " SUDAH PERNAH KLAIM.</span>";
-        return;
-    }
-
-    btn.innerText = "MEMBUKA BOX...";
-    btn.disabled = true;
-    box.classList.add("shake");
-    status.innerHTML = "";
-
+    const boxImage = document.getElementById("boxAnimate");
+    
+    // Efek guncangan box sebelum terbuka
+    boxImage.style.transform = "scale(1.1) rotate(5deg)";
+    
+    setTimeout(() => { boxImage.style.transform = "scale(1.1) rotate(-5deg)"; }, 100);
+    setTimeout(() => { boxImage.style.transform = "scale(1.1) rotate(5deg)"; }, 200);
+    setTimeout(() => { boxImage.style.transform = "scale(1.1) rotate(-5deg)"; }, 300);
+    
     setTimeout(() => {
-        localStorage.setItem("claim_" + idValue, "true");
-        const randomPrize = (Math.floor(Math.random() * (500 - 25 + 1)) + 25) * 1000;
-        document.getElementById("prizeAmount").innerText = "IDR " + randomPrize.toLocaleString('id-ID');
-
-        confetti({ particleCount: 150, spread: 70, origin: { y: 0.6 }, colors: ['#d97706', '#ffffff'] });
-        document.getElementById("displayUser").innerText = idValue;
-        document.getElementById("successModal").style.display = "flex";
+        boxImage.style.transform = "scale(1)";
         
-        box.classList.remove("shake");
-        btn.innerText = "KLAIM BERHASIL";
-    }, 2500);
+        // Pilih nominal acak kelipatan ribu untuk pemenang
+        const prizes = [25000, 50000, 75000, 100000, 150000, 200000, 500000];
+        const selectedPrize = prizes[Math.floor(Math.random() * prizes.length)];
+        
+        // Set data ke dalam panel pop up kemenangan
+        document.getElementById("winPrize").innerText = "IDR " + selectedPrize.toLocaleString('id-ID');
+        document.getElementById("winUser").innerText = "USER ID: " + userInput.toUpperCase();
+        
+        // Nyalakan pesta petasan kertas (Confetti Effect)
+        confetti({ particleCount: 150, spread: 70, origin: { y: 0.6 }, colors: ['#d97706', '#ffffff', '#fbbf24'] });
+        
+        // Munculkan overlay pop-up modal
+        document.getElementById("prizeModal").style.display = "flex";
+    }, 450);
 }
 </script>
 </body>
