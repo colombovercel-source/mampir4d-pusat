@@ -1,0 +1,353 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pusat Bantuan Live — MAMPIR4D</title>
+    <link href="https://fonts.googleapis.com/css2?family=Syne:wght@700;800&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary: #d97706; 
+            --primary-light: #fbbf24;
+            --bg-dark: #0a0a0a;
+            --surface: rgba(255, 255, 255, 0.05);
+            --border: rgba(217, 119, 6, 0.4);
+            --font-head: 'Syne', sans-serif;
+            --glass-gradient: linear-gradient(135deg, rgba(255,255,255,0.05) 0%, rgba(255,255,255,0.01) 100%);
+        }
+
+        * { 
+            box-sizing: border-box; 
+            margin: 0; 
+            padding: 0; 
+        }
+
+        body {
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            background: linear-gradient(rgba(10,10,10,0.85), rgba(10,10,10,0.85)), url('https://i.imgur.com/wPlgJU7.png');
+            background-size: cover; 
+            background-position: center; 
+            background-attachment: fixed;
+            display: flex; 
+            flex-direction: column; 
+            align-items: center; 
+            color: #eaddcf; 
+            padding: 135px 0 40px;
+            overflow-x: hidden; 
+            min-height: 100vh;
+        }
+
+        /* TOP BAR NAVBAR HORIZONTAL */
+        .top-bar {
+            background: rgba(0,0,0,0.9); 
+            width: 100%; 
+            height: auto; 
+            min-height: 85px;
+            display: flex; 
+            align-items: center; 
+            justify-content: center;
+            position: fixed; top: 0; z-index: 1000; 
+            border-bottom: 1px solid var(--border); 
+            backdrop-filter: blur(15px); 
+            -webkit-backdrop-filter: blur(15px); 
+            padding: 12px 20px;
+        }
+        .top-bar-content { 
+            width: 100%; 
+            max-width: 1200px; 
+            display: flex; 
+            flex-direction: column; 
+            align-items: center; 
+            gap: 15px; 
+        }
+        .top-bar-logo { 
+            height: 48px; 
+            width: auto; 
+            filter: drop-shadow(0 0 12px var(--primary)); 
+        }
+
+        .nav-menu {
+            display: flex; 
+            flex-wrap: wrap; 
+            justify-content: center; 
+            gap: 6px; 
+            background: rgba(0, 0, 0, 0.5); 
+            padding: 6px; 
+            border-radius: 50px; 
+            border: 1px solid var(--border);
+        }
+        .nav-item {
+            color: rgba(255, 255, 255, 0.8); 
+            text-decoration: none; 
+            font-size: 11px; 
+            font-weight: 700; 
+            text-transform: uppercase;
+            padding: 10px 16px; 
+            border-radius: 50px; 
+            transition: all 0.4s cubic-bezier(0.25, 0.8, 0.25, 1);
+            letter-spacing: 0.5px; 
+            border: 1px solid transparent; 
+            display: inline-block;
+        }
+        .nav-item:hover, .nav-item.active {
+            background: var(--glass-gradient); 
+            color: var(--primary-light); 
+            border-color: var(--border); 
+            box-shadow: 0 4px 15px rgba(217, 119, 6, 0.25);
+        }
+
+        /* MAIN CARD CONTAINER */
+        .card {
+            width: 92%; 
+            max-width: 450px; 
+            background: var(--surface); 
+            border: 1px solid rgba(255,255,255,0.1);
+            border-radius: 30px; 
+            padding: 30px 20px; 
+            text-align: center; 
+            backdrop-filter: blur(10px); 
+            -webkit-backdrop-filter: blur(10px);
+            box-shadow: 0 20px 50px rgba(0,0,0,0.6);
+            margin-bottom: 20px;
+        }
+
+        .card-title {
+            font-family: var(--font-head); 
+            font-size: 13px; 
+            color: var(--primary); 
+            text-align: center; 
+            letter-spacing: 1.5px; 
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1); 
+            padding-bottom: 15px; 
+            font-weight: 800; 
+            margin-bottom: 20px;
+        }
+
+        /* LIVE SUPPORT BUTTONS */
+        .support-link {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            background: rgba(0, 0, 0, 0.4);
+            border: 1px solid rgba(255, 255, 255, 0.05);
+            padding: 15px 20px;
+            border-radius: 18px;
+            color: #fff;
+            text-decoration: none;
+            font-weight: 700;
+            font-size: 14px;
+            margin-bottom: 12px;
+            transition: all 0.3s ease;
+            text-align: left;
+        }
+        .support-link:hover {
+            transform: translateY(-2px);
+            border-color: var(--border);
+            background: rgba(217, 119, 6, 0.1);
+            box-shadow: 0 5px 15px rgba(217, 119, 6, 0.15);
+        }
+        .support-link img {
+            width: 32px;
+            height: 32px;
+        }
+        .support-link .sub-text {
+            font-size: 11px;
+            color: #aaa;
+            font-weight: 400;
+            margin-top: 2px;
+        }
+
+        /* FAQ ACCORDION STYLING */
+        .faq-item {
+            background: rgba(0, 0, 0, 0.3);
+            border: 1px solid rgba(255, 255, 255, 0.03);
+            border-radius: 15px;
+            margin-bottom: 10px;
+            overflow: hidden;
+            text-align: left;
+        }
+        .faq-question {
+            padding: 15px 20px;
+            font-size: 13px;
+            font-weight: 700;
+            color: #eaddcf;
+            cursor: pointer;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            transition: background 0.3s ease;
+        }
+        .faq-question:hover {
+            background: rgba(255, 255, 255, 0.02);
+            color: var(--primary-light);
+        }
+        .faq-answer {
+            padding: 0 20px;
+            max-height: 0;
+            overflow: hidden;
+            font-size: 12px;
+            color: #b5a99e;
+            line-height: 1.6;
+            transition: all 0.3s cubic-bezier(0, 1, 0, 1);
+        }
+        .faq-item.active .faq-answer {
+            padding: 0 20px 15px 20px;
+            max-height: 1000px;
+            transition: all 0.3s cubic-bezier(1, 0, 1, 0);
+        }
+        .faq-item.active .faq-question {
+            color: var(--primary-light);
+            border-bottom: 1px solid rgba(255, 255, 255, 0.02);
+        }
+        .arrow-icon {
+            transition: transform 0.3s ease;
+            color: var(--primary);
+            font-weight: 800;
+        }
+        .faq-item.active .arrow-icon {
+            transform: rotate(180deg);
+        }
+
+        /* FLOATING WA */
+        .fab-wa {
+            position: fixed; right: 20px; bottom: 20px; width: 60px; height: 60px; background: #25d366;
+            border-radius: 50%; display: flex; align-items: center; justify-content: center;
+            box-shadow: 0 10px 25px rgba(0,0,0,0.5); z-index: 1001; animation: bounceWA 2s infinite;
+        }
+        @keyframes bounceWA { 0%, 100% { transform: translateY(0) scale(1); } 50% { transform: translateY(-10px) scale(1.05); } }
+
+        @media (min-width: 768px) {
+            .top-bar-content { flex-direction: row; justify-content: space-between; }
+            .nav-item { font-size: 12px; padding: 12px 20px; }
+            body { padding-top: 145px; }
+            .card { max-width: 500px; padding: 40px 30px; }
+        }
+    </style>
+</head>
+<body>
+
+<!-- TOP BAR NAVBAR -->
+<div class="top-bar">
+    <div class="top-bar-content">
+        <img src="https://i.imgur.com/u1hGiml.png" class="top-bar-logo" alt="MAMPIR4D LOGO">
+        
+        <nav class="nav-menu">
+            <a href="lobby.html" class="nav-item">Lobby Utama</a>
+            <a href="https://mampirdalam.com/" target="_blank" class="nav-item">Daftar Akun</a>
+            <a href="index.html" class="nav-item">Mystery Box</a>
+            <a href="riwayat.html" class="nav-item">Riwayat Claim</a>
+            <a href="bantuan.html" class="nav-item active">Bantuan Live</a>
+        </nav>
+    </div>
+</div>
+
+<!-- HUBUNGI CUSTOMER SERVICE CARD -->
+<div class="card">
+    <div class="card-title">LAYANAN LIVE CHAT & SUPPORT 24/7</div>
+    
+    <p style="font-size: 13px; color: #aaa; margin-bottom: 20px; line-height: 1.5;">
+        Punya kendala seputar klaim Mystery Box atau akun Anda? CS profesional kami siap membantu Anda kapan saja tanpa libur.
+    </p>
+
+    <!-- HUBUNGI LIVECHAT UTAMA -->
+    <a href="https://mampirdalam.com/" target="_blank" class="support-link">
+        <img src="https://img.icons8.com/external-flatart-icons-flat-flatarticons/64/external-chat-web-navigation-flatart-icons-flat-flatarticons.png" alt="Live Chat">
+        <div>
+            <div>LIVECHAT RESMI UTAMA</div>
+            <div class="sub-text">Respon instan, terhubung langsung ke sistem pusat</div>
+        </div>
+    </a>
+
+    <!-- HUBUNGI WHATSAPP -->
+    <a href="https://mampirdalam.com/" target="_blank" class="support-link">
+        <img src="https://img.icons8.com/color/64/whatsapp--v1.png" alt="WhatsApp">
+        <div>
+            <div>WHATSAPP OFFICIAL</div>
+            <div class="sub-text">Pelayanan ramah via aplikasi chat WhatsApp</div>
+        </div>
+    </a>
+
+    <!-- HUBUNGI TELEGRAM -->
+    <a href="https://t.me/Macthaaaloo" target="_blank" class="support-link">
+        <img src="https://img.icons8.com/color/64/telegram-app.png" alt="Telegram">
+        <div>
+            <div>TELEGRAM ADMIN CLAIM</div>
+            <div class="sub-text">Khusus validasi screenshot pemenang bonus besar</div>
+        </div>
+    </a>
+</div>
+
+<!-- FAQ CARD CONTAINER -->
+<div class="card">
+    <div class="card-title">PERTANYAAN YANG SERING DIAJUKAN (FAQ)</div>
+    
+    <!-- FAQ 1 -->
+    <div class="faq-item">
+        <div class="faq-question" onclick="toggleFaq(this)">
+            <span>Bagaimana cara klaim Mystery Box MAMPIR4D?</span>
+            <span class="arrow-icon">▼</span>
+        </div>
+        <div class="faq-answer">
+            Caranya sangat mudah! Anda cukup masuk ke halaman utama Mystery Box, ketik User ID terdaftar Anda pada kolom yang disediakan, lalu klik tombol "BUKA MISTERI BOX". Sistem akan mengundi hadiah keberuntungan Anda secara instan.
+        </div>
+    </div>
+
+    <!-- FAQ 2 -->
+    <div class="faq-item">
+        <div class="faq-question" onclick="toggleFaq(this)">
+            <span>Mengapa muncul pesan ID sudah pernah klaim?</span>
+            <span class="arrow-icon">▼</span>
+        </div>
+        <div class="faq-answer">
+            Setiap User ID resmi hanya memiliki kesempatan melakukan klaim sebanyak 1 kali per hari atau sesuai periode event aktif yang ditentukan. Jika muncul notifikasi tersebut, silakan coba kembali pada periode event berikutnya.
+        </div>
+    </div>
+
+    <!-- FAQ 3 -->
+    <div class="faq-item">
+        <div class="faq-question" onclick="toggleFaq(this)">
+            <span>Apa yang harus dilakukan setelah memenangkan hadiah?</span>
+            <span class="arrow-icon">▼</span>
+        </div>
+        <div class="faq-answer">
+            Segera ambil screenshot (tangkapan layar) bukti pop-up kemenangan Anda yang menampilkan nominal hadiah dan nama User ID Anda. Berikan bukti tersebut langsung kepada Admin Telegram atau Customer Service kami melalui tombol di atas untuk proses pencairan saldo.
+        </div>
+    </div>
+
+    <!-- FAQ 4 -->
+    <div class="faq-item">
+        <div class="faq-question" onclick="toggleFaq(this)">
+            <span>Apakah event klaim ini dipungut biaya?</span>
+            <span class="arrow-icon">▼</span>
+        </div>
+        <div class="faq-answer">
+            Tidak sama sekali! Seluruh rangkaian event Mystery Box di website MAMPIR4D bersifat 100% gratis untuk mengapresiasi para member setia kami. Waspadalah terhadap segala bentuk penipuan yang mengatasnamakan pihak kami.
+        </div>
+    </div>
+</div>
+
+<!-- FLOATING WA -->
+<a href="https://mampirdalam.com/" target="_blank" class="fab-wa">
+    <img src="https://img.icons8.com/color/38/whatsapp--v1.png" alt="WhatsApp">
+</a>
+
+<script>
+// Fungsi interaktif buka tutup list FAQ
+function toggleFaq(element) {
+    const parent = element.parentElement;
+    
+    // Jika item yang diklik sudah aktif, hilangkan kelas active (tutup)
+    if(parent.classList.contains("active")) {
+        parent.classList.remove("active");
+    } else {
+        // Tutup semua FAQ yang sedang terbuka terlebih dahulu
+        const allItems = document.querySelectorAll('.faq-item');
+        allItems.forEach(item => item.classList.remove('active'));
+        
+        // Buka FAQ yang dituju
+        parent.classList.add("active");
+    }
+}
+</script>
+</body>
+</html>
