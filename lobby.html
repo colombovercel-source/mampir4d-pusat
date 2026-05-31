@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Lobby Utama VVIP — MAMPIR4D Professional</title>
-    <link href="https://fonts.googleapis.com/css2?family=Syne:wght@700;800&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Syne:wght=700;800&family=Plus+Jakarta+Sans:wght=400;500;600;700&display=swap" rel="stylesheet">
     <style>
         :root {
             --primary: #d97706; 
@@ -34,7 +34,7 @@
             display: flex; 
             flex-direction: column; 
             align-items: center;
-            padding: 120px 0 40px; 
+            padding: 135px 0 40px; 
             overflow-x: hidden; 
             min-height: 100vh;
         }
@@ -150,14 +150,14 @@
 
         .card-title { 
             font-family: var(--font-head); 
-            font-size: 26px; 
+            font-size: 24px; 
             color: #fff; 
             margin-bottom: 12px; 
             font-weight: 800;
             letter-spacing: 0.5px;
         }
         .card-desc { 
-            font-size: 13.5px; 
+            font-size: 13px; 
             color: #cbd5e1; 
             line-height: 1.6; 
             margin-bottom: 30px; 
@@ -218,9 +218,9 @@
             background: var(--gold-gradient); 
             color: #fff; 
             border: none; 
-            padding: 22px;
+            padding: 20px;
             border-radius: 16px; 
-            font-size: 16px; 
+            font-size: 15px; 
             font-weight: 800; 
             cursor: pointer; 
             text-transform: uppercase;
@@ -264,7 +264,7 @@
             border-radius: 50%; display: flex; align-items: center; justify-content: center;
             box-shadow: 0 10px 25px rgba(0,0,0,0.5); z-index: 1001; animation: bounceWA 2s infinite;
         }
-        @keyframes bounceWA { 0%, 100% { transform: translateY(0) scale(1); } 50% { transform: translateY(-10px) scale(1.05); } }
+        @keyframes bounceWA { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(-10px); } }
 
         /* MEDIA QUERIES RESPONSIVE */
         @media (min-width: 768px) {
@@ -277,7 +277,7 @@
                 padding: 12px 20px; 
             }
             body { 
-                padding-top: 140px; 
+                padding-top: 145px; 
             }
             .premium-card {
                 max-width: 500px;
@@ -288,28 +288,24 @@
 </head>
 <body>
 
-<!-- HEADER & NAVIGATION CONTAINER -->
 <div class="header-nav">
     <div class="nav-container">
-        <!-- LINK LOGO RESMI MAMPIR4D SESUAI KODE SYSTEM -->
         <img src="https://i.imgur.com/u1hGiml.png" class="logo-img" alt="Logo MAMPIR4D">
         <nav class="nav-menu">
             <a href="lobby.html" class="nav-item active">Lobby Utama</a>
-            <a href="https://mampirdalam.com/" target="_blank" class="nav-item">Daftar Akun</a>
+            <a href="daftar.html" class="nav-item">Daftar Akun</a>
             <a href="index.html" class="nav-item">Mystery Box</a>
-            <a href="https://mampirdalam.com/" target="_blank" class="nav-item">Riwayat Claim</a>
-            <a href="https://mampirdalam.com/" target="_blank" class="nav-item">Bantuan Live</a>
+            <a href="riwayat.html" class="nav-item">Riwayat Claim</a>
+            <a href="bantuan.html" class="nav-item">Bantuan Live</a>
         </nav>
     </div>
 </div>
 
-<!-- BLOCK CARD LOBBY UTAMA MAMPIR4D -->
 <div class="premium-card">
     <div class="welcome-badge"><span></span> MAMPIR4D Access Authorized</div>
     <h1 class="card-title">GERBANG SERVER MAMPIR4D</h1>
     <p class="card-desc">Selamat datang di pusat hiburan daring premium MAMPIR4D. Silakan pilih kategori permainan di bawah ini atau langsung ketuk masuk ke portal utama untuk performa kecepatan tinggi.</p>
     
-    <!-- GRID INTERAKTIF KATEGORI PERMAINAN (MAMPIR4D TARGET LINK) -->
     <div class="game-grid">
         <a href="https://mampirdalam.com/" target="_blank" class="game-item">
             <img src="https://i.imgur.com/PIq7HwF.png" class="game-icon-img" alt="Mega Slots">
@@ -329,18 +325,15 @@
         </a>
     </div>
 
-    <!-- TOMBOL UTAMA CTA KE SERVER PERMAINAN MAMPIR4D -->
     <a href="https://mampirdalam.com/" target="_blank" class="btn-cta">MASUK LOBBY MAMPIR4D</a>
     
-    <!-- PANEL INFORMASI PROGRESSIVE JACKPOT -->
     <div class="status-panel">
         <div class="jackpot-title">MAMPIR4D Live Progressive Jackpot</div>
         <div class="jackpot-val" id="jackpotDisplay">IDR 8,421,550,230</div>
     </div>
 </div>
 
-<!-- FLOATING WA LINK MAMPIRDALAM.COM -->
-<a href="https://mampirdalam.com/" target="_blank" class="fab-wa">
+<a href="bantuan.html" class="fab-wa">
     <img src="https://img.icons8.com/color/38/whatsapp--v1.png" alt="WhatsApp">
 </a>
 
