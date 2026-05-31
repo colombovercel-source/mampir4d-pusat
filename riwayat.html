@@ -37,7 +37,7 @@
             min-height: 100vh;
         }
 
-        /* TOP BAR NAVBAR HORIZONTAL (SAMA DENGAN INDEX) */
+        /* TOP BAR NAVBAR HORIZONTAL (SINKRON 100% DENGAN UTAMA) */
         .top-bar {
             background: rgba(0,0,0,0.9); 
             width: 100%; 
@@ -149,13 +149,13 @@
             color: #eaddcf; 
         }
 
-        /* FLOATING WA */
+        /* FLOATING WA (DIARAHKAN KE BANTUAN LOKAL AGAR SINKRON) */
         .fab-wa {
             position: fixed; right: 20px; bottom: 20px; width: 60px; height: 60px; background: #25d366;
             border-radius: 50%; display: flex; align-items: center; justify-content: center;
             box-shadow: 0 10px 25px rgba(0,0,0,0.5); z-index: 1001; animation: bounceWA 2s infinite;
         }
-        @keyframes bounceWA { 0%, 100% { transform: translateY(0) scale(1); } 50% { transform: translateY(-10px) scale(1.05); } }
+        @keyframes bounceWA { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(-10px); } }
 
         @media (min-width: 768px) {
             .top-bar-content { flex-direction: row; justify-content: space-between; }
@@ -167,35 +167,29 @@
 </head>
 <body>
 
-<!-- TOP BAR NAVBAR -->
 <div class="top-bar">
     <div class="top-bar-content">
-        <!-- LOGO MAMPIR4D -->
         <img src="https://i.imgur.com/u1hGiml.png" class="top-bar-logo" alt="MAMPIR4D LOGO">
         
-        <!-- NAV MENU (Riwayat Claim Posisi Active) -->
         <nav class="nav-menu">
             <a href="lobby.html" class="nav-item">Lobby Utama</a>
-            <a href="https://mampirdalam.com/" target="_blank" class="nav-item">Daftar Akun</a>
+            <a href="daftar.html" class="nav-item">Daftar Akun</a>
             <a href="index.html" class="nav-item">Mystery Box</a>
             <a href="riwayat.html" class="nav-item active">Riwayat Claim</a>
-            <a href="https://mampirdalam.com/" target="_blank" class="nav-item">Bantuan Live</a>
+            <a href="bantuan.html" class="nav-item">Bantuan Live</a>
         </nav>
     </div>
 </div>
 
-<!-- CONTAINER TRANSAKSI KLAIM -->
 <div class="card">
     <div class="table-title">LIVE DATA TRANSAKSI KLAIM TERAKHIR</div>
     <div class="history-scroll">
         <table id="hTable">
-            <!-- Data baris diproduksi real-time oleh javascript -->
-        </table>
+            </table>
     </div>
 </div>
 
-<!-- FLOATING WHATSAPP CHAT -->
-<a href="https://mampirdalam.com/" target="_blank" class="fab-wa">
+<a href="bantuan.html" class="fab-wa">
     <img src="https://img.icons8.com/color/38/whatsapp--v1.png" alt="WhatsApp">
 </a>
 
