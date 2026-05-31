@@ -1,0 +1,237 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Riwayat Klaim Resmi — MAMPIR4D</title>
+    <link href="https://fonts.googleapis.com/css2?family=Syne:wght@700;800&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary: #d97706; 
+            --primary-light: #fbbf24;
+            --bg-dark: #0a0a0a;
+            --surface: rgba(255, 255, 255, 0.05);
+            --border: rgba(217, 119, 6, 0.4);
+            --font-head: 'Syne', sans-serif;
+            --glass-gradient: linear-gradient(135deg, rgba(255,255,255,0.05) 0%, rgba(255,255,255,0.01) 100%);
+        }
+
+        * { 
+            box-sizing: border-box; 
+            margin: 0; 
+            padding: 0; 
+        }
+
+        body {
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            background: linear-gradient(rgba(10,10,10,0.85), rgba(10,10,10,0.85)), url('https://i.imgur.com/wPlgJU7.png');
+            background-size: cover; 
+            background-position: center; 
+            background-attachment: fixed;
+            display: flex; 
+            flex-direction: column; 
+            align-items: center; 
+            color: #eaddcf; 
+            padding: 135px 0 40px;
+            overflow-x: hidden; 
+            min-height: 100vh;
+        }
+
+        /* TOP BAR NAVBAR HORIZONTAL (SAMA DENGAN INDEX) */
+        .top-bar {
+            background: rgba(0,0,0,0.9); 
+            width: 100%; 
+            height: auto; 
+            min-height: 85px;
+            display: flex; 
+            align-items: center; 
+            justify-content: center;
+            position: fixed; 
+            top: 0; 
+            z-index: 1000; 
+            border-bottom: 1px solid var(--border); 
+            backdrop-filter: blur(15px); 
+            -webkit-backdrop-filter: blur(15px); 
+            padding: 12px 20px;
+        }
+        .top-bar-content { 
+            width: 100%; 
+            max-width: 1200px; 
+            display: flex; 
+            flex-direction: column; 
+            align-items: center; 
+            gap: 15px; 
+        }
+        .top-bar-logo { 
+            height: 48px; 
+            width: auto; 
+            filter: drop-shadow(0 0 12px var(--primary)); 
+        }
+
+        .nav-menu {
+            display: flex; 
+            flex-wrap: wrap; 
+            justify-content: center; 
+            gap: 6px; 
+            background: rgba(0, 0, 0, 0.5); 
+            padding: 6px; 
+            border-radius: 50px; 
+            border: 1px solid var(--border);
+        }
+        .nav-item {
+            color: rgba(255, 255, 255, 0.8); 
+            text-decoration: none; 
+            font-size: 11px; 
+            font-weight: 700; 
+            text-transform: uppercase;
+            padding: 10px 16px; 
+            border-radius: 50px; 
+            transition: all 0.4s cubic-bezier(0.25, 0.8, 0.25, 1);
+            letter-spacing: 0.5px; 
+            border: 1px solid transparent; 
+            display: inline-block;
+        }
+        .nav-item:hover, .nav-item.active {
+            background: var(--glass-gradient); 
+            color: var(--primary-light); 
+            border-color: var(--border); 
+            box-shadow: 0 4px 15px rgba(217, 119, 6, 0.25);
+        }
+
+        /* CARD FOR HISTORY TABLE */
+        .card {
+            width: 92%; 
+            max-width: 450px; 
+            background: var(--surface); 
+            border: 1px solid rgba(255,255,255,0.1);
+            border-radius: 30px; 
+            padding: 35px 25px; 
+            text-align: center; 
+            backdrop-filter: blur(10px); 
+            -webkit-backdrop-filter: blur(10px);
+            box-shadow: 0 20px 50px rgba(0,0,0,0.6);
+        }
+
+        .table-title {
+            font-family: var(--font-head); 
+            font-size: 13px; 
+            color: var(--primary); 
+            text-align: center; 
+            letter-spacing: 1.5px; 
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1); 
+            padding-bottom: 15px; 
+            font-weight: 800; 
+            margin-bottom: 15px;
+        }
+
+        .history-scroll { 
+            max-height: 420px; 
+            overflow-y: auto; 
+            padding-right: 5px; 
+        }
+        .history-scroll::-webkit-scrollbar { width: 4px; }
+        .history-scroll::-webkit-scrollbar-thumb { background: var(--primary); border-radius: 10px; }
+
+        table { 
+            width: 100%; 
+            border-collapse: collapse; 
+            font-size: 13px; 
+        }
+        tr {
+            transition: background 0.3s ease;
+        }
+        tr:nth-child(even) { 
+            background: rgba(255, 255, 255, 0.02); 
+        }
+        td { 
+            padding: 14px 8px; 
+            border-bottom: 1px solid rgba(255, 255, 255, 0.03); 
+            color: #eaddcf; 
+        }
+
+        /* FLOATING WA */
+        .fab-wa {
+            position: fixed; right: 20px; bottom: 20px; width: 60px; height: 60px; background: #25d366;
+            border-radius: 50%; display: flex; align-items: center; justify-content: center;
+            box-shadow: 0 10px 25px rgba(0,0,0,0.5); z-index: 1001; animation: bounceWA 2s infinite;
+        }
+        @keyframes bounceWA { 0%, 100% { transform: translateY(0) scale(1); } 50% { transform: translateY(-10px) scale(1.05); } }
+
+        @media (min-width: 768px) {
+            .top-bar-content { flex-direction: row; justify-content: space-between; }
+            .nav-item { font-size: 12px; padding: 12px 20px; }
+            body { padding-top: 145px; }
+            .card { max-width: 500px; padding: 40px; }
+        }
+    </style>
+</head>
+<body>
+
+<!-- TOP BAR NAVBAR -->
+<div class="top-bar">
+    <div class="top-bar-content">
+        <!-- LOGO MAMPIR4D -->
+        <img src="https://i.imgur.com/u1hGiml.png" class="top-bar-logo" alt="MAMPIR4D LOGO">
+        
+        <!-- NAV MENU (Riwayat Claim Posisi Active) -->
+        <nav class="nav-menu">
+            <a href="lobby.html" class="nav-item">Lobby Utama</a>
+            <a href="https://mampirdalam.com/" target="_blank" class="nav-item">Daftar Akun</a>
+            <a href="index.html" class="nav-item">Mystery Box</a>
+            <a href="riwayat.html" class="nav-item active">Riwayat Claim</a>
+            <a href="https://mampirdalam.com/" target="_blank" class="nav-item">Bantuan Live</a>
+        </nav>
+    </div>
+</div>
+
+<!-- CONTAINER TRANSAKSI KLAIM -->
+<div class="card">
+    <div class="table-title">LIVE DATA TRANSAKSI KLAIM TERAKHIR</div>
+    <div class="history-scroll">
+        <table id="hTable">
+            <!-- Data baris diproduksi real-time oleh javascript -->
+        </table>
+    </div>
+</div>
+
+<!-- FLOATING WHATSAPP CHAT -->
+<a href="https://mampirdalam.com/" target="_blank" class="fab-wa">
+    <img src="https://img.icons8.com/color/38/whatsapp--v1.png" alt="WhatsApp">
+</a>
+
+<script>
+// Array pembantu nama samaran user bo / data display
+const uPrefix = ["WIN","BOSS","JP","VIP","MEGA","LUCKY","GACOR","SULTAN","PRO"];
+
+function generateLiveRow() {
+    const tbl = document.getElementById("hTable");
+    if(tbl) {
+        // Acak nama user id 3 digit belakang bintang
+        const user = uPrefix[Math.floor(Math.random()*uPrefix.length)] + Math.floor(Math.random()*89+10) + "***";
+        // Acak jumlah hadiah klaim kelipatan ribu (IDR 25.000 s/d IDR 500.000)
+        const amount = (Math.floor(Math.random() * (500 - 25 + 1)) + 25) * 1000;
+        
+        const row = tbl.insertRow(0);
+        row.innerHTML = `
+            <td style="text-align: left; font-weight: 600;"><span style="color: var(--primary-light)">🎁</span> ${user}</td>
+            <td style="text-align: center; color: #888; font-size: 11px; font-style: italic;">Baru Saja</td>
+            <td style="text-align: right; color: var(--primary-light); font-weight: 800; text-shadow: 0 0 5px rgba(217,119,6,0.3);">IDR ${amount.toLocaleString('id-ID')}</td>
+        `;
+        
+        // Batasi jumlah baris dalam tabel hanya 20 agar meringankan browser
+        if(tbl.rows.length > 20) {
+            tbl.deleteRow(20);
+        }
+    }
+}
+
+// Menambah baris baru secara dinamis setiap 5 detik
+setInterval(generateLiveRow, 5000);
+
+// Looping cetak data instan awal (15 data pertama) biar saat dibuka tidak kosong melompong
+for(let i=0; i<15; i++) {
+    setTimeout(generateLiveRow, i * 150);
+}
+</script>
+</body>
+</html>
