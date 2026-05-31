@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Mystery Box Premium — MAMPIR4D</title>
-    <link href="https://fonts.googleapis.com/css2?family=Syne:wght@700;800&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Syne:wght=700;800&family=Plus+Jakarta+Sans:wght=400;500;600;700&display=swap" rel="stylesheet">
     <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.6.0/dist/confetti.browser.min.js"></script>
     <style>
         :root {
@@ -17,232 +17,72 @@
             --glass-gradient: linear-gradient(135deg, rgba(255,255,255,0.05) 0%, rgba(255,255,255,0.01) 100%);
         }
 
-        * { 
-            box-sizing: border-box; 
-            margin: 0; 
-            padding: 0; 
-        }
+        * { box-sizing: border-box; margin: 0; padding: 0; }
 
         body {
             font-family: 'Plus Jakarta Sans', sans-serif;
             background: linear-gradient(rgba(10,10,10,0.85), rgba(10,10,10,0.85)), url('https://i.imgur.com/wPlgJU7.png');
-            background-size: cover; 
-            background-position: center; 
-            background-attachment: fixed;
-            display: flex; 
-            flex-direction: column; 
-            align-items: center; 
-            color: #eaddcf; 
-            padding: 135px 0 40px;
-            overflow-x: hidden; 
-            min-height: 100vh;
+            background-size: cover; background-position: center; background-attachment: fixed;
+            display: flex; flex-direction: column; align-items: center; color: #eaddcf; padding: 135px 0 40px;
+            overflow-x: hidden; min-height: 100vh;
         }
 
-        /* TOP BAR NAVBAR HORIZONTAL */
+        /* NAVBAR */
         .top-bar {
-            background: rgba(0,0,0,0.9); 
-            width: 100%; 
-            height: auto; 
-            min-height: 85px;
-            display: flex; 
-            align-items: center; 
-            justify-content: center;
-            position: fixed; top: 0; z-index: 1000; 
-            border-bottom: 1px solid var(--border); 
-            backdrop-filter: blur(15px); 
-            -webkit-backdrop-filter: blur(15px); 
-            padding: 12px 20px;
+            background: rgba(0,0,0,0.9); width: 100%; min-height: 85px; display: flex; align-items: center; justify-content: center;
+            position: fixed; top: 0; z-index: 1000; border-bottom: 1px solid var(--border); backdrop-filter: blur(15px); -webkit-backdrop-filter: blur(15px); padding: 12px 20px;
         }
-        .top-bar-content { 
-            width: 100%; 
-            max-width: 1200px; 
-            display: flex; 
-            flex-direction: column; 
-            align-items: center; 
-            gap: 15px; 
-        }
-        .top-bar-logo { 
-            height: 48px; 
-            width: auto; 
-            filter: drop-shadow(0 0 12px var(--primary)); 
-        }
+        .top-bar-content { width: 100%; max-width: 1200px; display: flex; flex-direction: column; align-items: center; gap: 15px; }
+        .top-bar-logo { height: 48px; width: auto; filter: drop-shadow(0 0 12px var(--primary)); }
+        .nav-menu { display: flex; flex-wrap: wrap; justify-content: center; gap: 6px; background: rgba(0, 0, 0, 0.5); padding: 6px; border-radius: 50px; border: 1px solid var(--border); }
+        .nav-item { color: rgba(255, 255, 255, 0.8); text-decoration: none; font-size: 11px; font-weight: 700; text-transform: uppercase; padding: 10px 16px; border-radius: 50px; transition: all 0.4s; letter-spacing: 0.5px; border: 1px solid transparent; display: inline-block; }
+        .nav-item:hover, .nav-item.active { background: var(--glass-gradient); color: var(--primary-light); border-color: var(--border); box-shadow: 0 4px 15px rgba(217, 119, 6, 0.25); }
 
-        .nav-menu {
-            display: flex; 
-            flex-wrap: wrap; 
-            justify-content: center; 
-            gap: 6px; 
-            background: rgba(0, 0, 0, 0.5); 
-            padding: 6px; 
-            border-radius: 50px; 
-            border: 1px solid var(--border);
-        }
-        .nav-item {
-            color: rgba(255, 255, 255, 0.8); 
-            text-decoration: none; 
-            font-size: 11px; 
-            font-weight: 700; 
-            text-transform: uppercase;
-            padding: 10px 16px; 
-            border-radius: 50px; 
-            transition: all 0.4s cubic-bezier(0.25, 0.8, 0.25, 1);
-            letter-spacing: 0.5px; 
-            border: 1px solid transparent; 
-            display: inline-block;
-        }
-        .nav-item:hover, .nav-item.active {
-            background: var(--glass-gradient); 
-            color: var(--primary-light); 
-            border-color: var(--border); 
-            box-shadow: 0 4px 15px rgba(217, 119, 6, 0.25);
-        }
+        /* CARD STYLE */
+        .card { width: 92%; max-width: 420px; background: var(--surface); border: 1px solid rgba(255,255,255,0.1); border-radius: 30px; padding: 35px 25px; text-align: center; backdrop-filter: blur(10px); -webkit-backdrop-filter: blur(10px); box-shadow: 0 20px 50px rgba(0,0,0,0.6); }
+        .card-title { font-family: var(--font-head); font-size: 13px; color: var(--primary); letter-spacing: 1.5px; border-bottom: 1px solid rgba(255, 255, 255, 0.1); padding-bottom: 15px; font-weight: 800; margin-bottom: 25px; }
 
-        /* MAIN CARD MYSTERY BOX */
-        .card {
-            width: 92%; 
-            max-width: 420px; 
-            background: var(--surface); 
-            border: 1px solid rgba(255,255,255,0.1);
-            border-radius: 30px; 
-            padding: 35px 25px; 
-            text-align: center; 
-            backdrop-filter: blur(10px); 
-            -webkit-backdrop-filter: blur(10px);
-            box-shadow: 0 20px 50px rgba(0,0,0,0.6);
-        }
+        /* BOX IMAGE */
+        .box-container { position: relative; width: 180px; height: 180px; margin: 0 auto 25px; cursor: pointer; }
+        .box-img { width: 100%; height: 100%; object-fit: contain; transition: transform 0.3s ease; }
+        .box-container:hover .box-img { transform: scale(1.05); }
 
-        .card-title {
-            font-family: var(--font-head); 
-            font-size: 13px; 
-            color: var(--primary); 
-            text-align: center; 
-            letter-spacing: 1.5px; 
-            border-bottom: 1px solid rgba(255, 255, 255, 0.1); 
-            padding-bottom: 15px; 
-            font-weight: 800; 
-            margin-bottom: 25px;
-        }
+        input { width: 100%; padding: 16px; border-radius: 14px; border: 1px solid #333; background: rgba(0,0,0,0.6); color: white; outline: none; font-size: 14px; font-weight: 600; text-align: center; transition: border-color 0.3s; margin-bottom: 15px; }
+        input:focus { border-color: var(--primary); }
+        .main-btn { width: 100%; background: linear-gradient(135deg, var(--primary), #b45309); color: #fff; border: none; padding: 18px; border-radius: 14px; font-size: 14px; font-weight: 800; cursor: pointer; text-transform: uppercase; box-shadow: 0 8px 20px rgba(217, 119, 6, 0.3); transition: 0.3s; letter-spacing: 0.5px; }
+        .main-btn:hover { transform: translateY(-2px); box-shadow: 0 12px 25px rgba(217, 119, 6, 0.5); }
 
-        /* BOX IMAGES STYLE */
-        .box-container {
-            position: relative;
-            width: 180px;
-            height: 180px;
-            margin: 0 auto 25px;
-            cursor: pointer;
-        }
-        .box-img {
-            width: 100%;
-            height: 100%;
-            object-fit: contain;
-            transition: transform 0.3s ease;
-        }
-        .box-container:hover .box-img {
-            transform: scale(1.05);
-        }
+        /* MODAL WINNER */
+        .modal-overlay { position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.9); display: none; align-items: center; justify-content: center; z-index: 10000; backdrop-filter: blur(12px); -webkit-backdrop-filter: blur(12px); }
+        .modal-box { background: #0d0d0d; width: 92%; max-width: 380px; padding: 40px 25px 30px; border-radius: 35px; border: 1px solid var(--border); text-align: center; }
+        .prize-display { background: linear-gradient(135deg, #1e1b18 0%, #0a0a0a 100%); border: 1px solid var(--border); padding: 20px; border-radius: 20px; margin: 20px 0; }
+        .chat-btn { display: block; background: linear-gradient(135deg, var(--primary), #b45309); color: white; text-decoration: none; padding: 16px; border-radius: 14px; font-weight: 800; margin-top: 20px; text-transform: uppercase; font-size: 14px; }
 
-        input {
-            width: 100%; 
-            padding: 16px; 
-            border-radius: 14px; 
-            border: 1px solid #333;
-            background: rgba(0,0,0,0.6); 
-            color: white; 
-            outline: none; 
-            font-size: 14px;
-            font-weight: 600;
-            text-align: center;
-            transition: border-color 0.3s ease;
-            margin-bottom: 15px;
-        }
-        input:focus {
-            border-color: var(--primary);
-        }
-
-        .main-btn {
-            width: 100%; 
-            background: linear-gradient(135deg, var(--primary), #b45309); 
-            color: #fff; 
-            border: none;
-            padding: 18px; 
-            border-radius: 14px; 
-            font-size: 14px; 
-            font-weight: 800; 
-            cursor: pointer; 
-            text-transform: uppercase;
-            box-shadow: 0 8px 20px rgba(217, 119, 6, 0.3);
-            transition: 0.3s;
-            letter-spacing: 0.5px;
-        }
-        .main-btn:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 12px 25px rgba(217, 119, 6, 0.5);
-        }
-
-        /* MODAL KEMENANGAN POP UP */
-        .modal-overlay {
-            position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.9);
-            display: none; align-items: center; justify-content: center; z-index: 10000; backdrop-filter: blur(12px);
-            -webkit-backdrop-filter: blur(12px);
-        }
-        .modal-box {
-            background: #0d0d0d; width: 92%; max-width: 380px; padding: 40px 25px 30px; border-radius: 35px;
-            border: 1px solid var(--border); text-align: center;
-        }
-        .prize-display {
-            background: linear-gradient(135deg, #1e1b18 0%, #0a0a0a 100%);
-            border: 1px solid var(--border);
-            padding: 20px;
-            border-radius: 20px;
-            margin: 20px 0;
-        }
-        .chat-btn {
-            display: block; background: linear-gradient(135deg, #25d366, #128c7e); color: white; text-decoration: none;
-            padding: 16px; border-radius: 14px; font-weight: 800; margin-top: 20px; text-transform: uppercase; font-size: 14px;
-        }
-
-        /* FLOATING WA */
-        .fab-wa {
-            position: fixed; right: 20px; bottom: 20px; width: 60px; height: 60px; background: #25d366;
-            border-radius: 50%; display: flex; align-items: center; justify-content: center;
-            box-shadow: 0 10px 25px rgba(0,0,0,0.5); z-index: 1001; animation: bounceWA 2s infinite;
-        }
-        @keyframes bounceWA { 0%, 100% { transform: translateY(0) scale(1); } 50% { transform: translateY(-10px) scale(1.05); } }
-
-        @media (min-width: 768px) {
-            .top-bar-content { flex-direction: row; justify-content: space-between; }
-            .nav-item { font-size: 12px; padding: 12px 20px; }
-            body { padding-top: 145px; }
-        }
+        .fab-wa { position: fixed; right: 20px; bottom: 20px; width: 60px; height: 60px; background: #25d366; border-radius: 50%; display: flex; align-items: center; justify-content: center; box-shadow: 0 10px 25px rgba(0,0,0,0.5); z-index: 1001; animation: bounceWA 2s infinite; }
+        @keyframes bounceWA { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(-10px); } }
+        @media (min-width: 768px) { .top-bar-content { flex-direction: row; justify-content: space-between; } .nav-item { font-size: 12px; padding: 12px 20px; } body { padding-top: 145px; } }
     </style>
 </head>
 <body>
 
-<!-- MODAL POP UP HADIAH WINNER -->
 <div class="modal-overlay" id="prizeModal">
     <div class="modal-box">
         <div style="font-size: 55px; margin-bottom: 5px;">🎉</div>
         <h2 style="font-family: var(--font-head); color: var(--primary-light); font-size: 20px; text-transform: uppercase;">SELAMAT KLAIM SUKSES!</h2>
         <p style="color:#aaa; font-size:12px; margin-top:5px;">User ID Anda terverifikasi memenangkan hadiah harian:</p>
-        
         <div class="prize-display">
             <div style="font-size: 11px; color:#888; font-weight:700; text-transform: uppercase;">BONUS MYSTERY BOX</div>
-            <div id="winPrize" style="font-size: 28px; font-weight:800; color:#ffd700; text-shadow: 0 0 10px rgba(217,119,6,0.5); margin:5px 0;">IDR 0</div>
+            <div id="winPrize" style="font-size: 28px; font-weight:800; color:#ffd700; margin:5px 0;">IDR 0</div>
             <div id="winUser" style="font-size: 12px; color:#fff; font-weight:600; opacity: 0.8;">USER: ID</div>
         </div>
-
-        <p style="color: #eaddcf; font-size: 13px; line-height: 1.5;">
-            Ambil screenshot bukti ini dan segera kirimkan ke Live Chat atau Admin Bantuan kami untuk proses pencairan saldo bonus Anda!
-        </p>
-        <a href="bantuan.html" class="chat-btn" style="background: linear-gradient(135deg, var(--primary), #b45309);">PROSES SEKARANG VIA PUSAT BANTUAN</a>
+        <p style="color: #eaddcf; font-size: 13px; line-height: 1.5;">Ambil screenshot bukti ini dan segera kirimkan ke Live Chat atau Admin Bantuan kami untuk proses pencairan saldo bonus Anda!</p>
+        <a href="bantuan.html" class="chat-btn">PROSES SEKARANG VIA PUSAT BANTUAN</a>
     </div>
 </div>
 
-<!-- TOP BAR NAVBAR -->
 <div class="top-bar">
     <div class="top-bar-content">
         <img src="https://i.imgur.com/u1hGiml.png" class="top-bar-logo" alt="MAMPIR4D LOGO">
-        
         <nav class="nav-menu">
             <a href="lobby.html" class="nav-item">Lobby Utama</a>
             <a href="daftar.html" class="nav-item">Daftar Akun</a>
@@ -253,67 +93,39 @@
     </div>
 </div>
 
-<!-- CONTAINER UTAMA UNTUK EVENT KLAIM BOX -->
 <div class="card">
     <div class="card-title">EVENT BULANAN EXCLUSIVE MYSTERY BOX</div>
-    
     <div class="box-container" onclick="triggerClaim()">
-        <!-- Tautan gambar baru yang diperbarui -->
         <img src="https://i.imgur.com/YYS3RMW.png" id="boxAnimate" class="box-img" alt="Mystery Box Premium">
     </div>
-
     <form onsubmit="handleClaimForm(event)">
         <input type="text" id="userIdInput" placeholder="MASUKKAN USER ID ANDA" required minlength="3">
         <button type="submit" class="main-btn">BUKA MISTERI BOX</button>
     </form>
 </div>
 
-<!-- FLOATING WHATSAPP -->
 <a href="bantuan.html" class="fab-wa">
     <img src="https://img.icons8.com/color/38/whatsapp--v1.png" alt="WhatsApp">
 </a>
 
 <script>
-function handleClaimForm(e) {
-    e.preventDefault();
-    triggerClaim();
-}
-
+function handleClaimForm(e) { e.preventDefault(); triggerClaim(); }
 function triggerClaim() {
     const userInput = document.getElementById("userIdInput").value.trim();
-    
-    if (userInput === "") {
-        alert("Silakan masukkan User ID resmi Anda terlebih dahulu untuk memulai pengundian!");
-        document.getElementById("userIdInput").focus();
-        return;
-    }
-
+    if (userInput === "") { alert("Silakan masukkan User ID resmi Anda terlebih dahulu!"); return; }
     const boxImage = document.getElementById("boxAnimate");
-    
-    // Efek guncangan box sebelum terbuka
     boxImage.style.transform = "scale(1.1) rotate(5deg)";
-    
     setTimeout(() => { boxImage.style.transform = "scale(1.1) rotate(-5deg)"; }, 100);
     setTimeout(() => { boxImage.style.transform = "scale(1.1) rotate(5deg)"; }, 200);
-    setTimeout(() => { boxImage.style.transform = "scale(1.1) rotate(-5deg)"; }, 300);
-    
     setTimeout(() => {
         boxImage.style.transform = "scale(1)";
-        
-        // Pilih nominal acak kelipatan ribu untuk pemenang
         const prizes = [25000, 50000, 75000, 100000, 150000, 200000, 500000];
         const selectedPrize = prizes[Math.floor(Math.random() * prizes.length)];
-        
-        // Set data ke dalam panel pop up kemenangan
         document.getElementById("winPrize").innerText = "IDR " + selectedPrize.toLocaleString('id-ID');
         document.getElementById("winUser").innerText = "USER ID: " + userInput.toUpperCase();
-        
-        // Nyalakan pesta petasan kertas (Confetti Effect)
         confetti({ particleCount: 150, spread: 70, origin: { y: 0.6 }, colors: ['#d97706', '#ffffff', '#fbbf24'] });
-        
-        // Munculkan overlay pop-up modal
         document.getElementById("prizeModal").style.display = "flex";
-    }, 450);
+    }, 350);
 }
 </script>
 </body>
